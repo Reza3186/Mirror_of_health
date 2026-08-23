@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ea580c">
+    <title>آیینه سلامت | Health Mirror</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+        :root {
+            --orange-50: #fff7ed; --orange-100: #ffedd5; --orange-200: #fed7aa; --orange-300: #fdba74;
+            --orange-400: #fb923c; --orange-500: #f97316; --orange-600: #ea580c; --orange-700: #c2410c;
+            --orange-800: #9a3412; --orange-900: #7c2d12;
+            --stone-50: #fafaf9; --stone-100: #f5f5f4; --stone-200: #e7e5e4; --stone-300: #d6d3d1;
+            --stone-400: #a8a29e; --stone-500: #78716c; --stone-600: #57534e; --stone-700: #44403c;
+            --stone-800: #292524; --stone-900: #1c1917;
+            --danger: #ef4444; --warning: #f59e0b; --success: #10b981; --info: #06b6d4; --blue: #3b82f6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
+        html { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+        body { background: var(--stone-50); color: var(--stone-900); min-height: 100vh; overflow-x: hidden; position: relative; padding: 12px; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(at 20% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 50%), radial-gradient(at 80% 80%, rgba(234, 88, 12, 0.1) 0%, transparent 50%), radial-gradient(at 50% 50%, rgba(251, 146, 60, 0.08) 0%, transparent 50%); z-index: -1; animation: meshMove 20s ease-in-out infinite; }
+        @keyframes meshMove { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(2deg); } }
+
+        /* ============ برند و لوگوی آیینه سلامت ============ */
+        .brand-hero { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+        .brand-hero .brand-icon { width: 100px; height: auto; filter: drop-shadow(0 12px 24px rgba(249,115,22,0.35)); animation: brandFloat 3.5s ease-in-out infinite; }
+        @keyframes brandFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+        .brand-name-fa {
+            font-size: 2.4rem; font-weight: 900; line-height: 1.3; letter-spacing: 0.5px; margin-top: 10px;
+            background: linear-gradient(90deg, var(--orange-700), var(--orange-500), var(--orange-300), var(--orange-500), var(--orange-700));
+            background-size: 250% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: brandShine 5s linear infinite;
+        }
+        @keyframes brandShine { to { background-position: 250% center; } }
+        .brand-name-en { direction: ltr; font-size: 0.72rem; font-weight: 700; letter-spacing: 7px; text-transform: uppercase; color: var(--stone-500); margin-top: 4px; padding-left: 7px; }
+        .brand-tagline { font-size: 0.82rem; color: var(--stone-500); font-weight: 600; margin-top: 10px; line-height: 1.6; }
+
+        .brand-header { display: flex; align-items: center; justify-content: center; gap: 13px; margin-bottom: 16px; }
+        .brand-header .brand-icon { width: 54px; height: auto; filter: drop-shadow(0 6px 14px rgba(249,115,22,0.3)); flex-shrink: 0; }
+        .brand-header .brand-txt { text-align: right; }
+        .brand-name-fa-sm {
+            font-size: 1.55rem; font-weight: 900; line-height: 1.2;
+            background: linear-gradient(90deg, var(--orange-700), var(--orange-500), var(--orange-300), var(--orange-500), var(--orange-700));
+            background-size: 250% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: brandShine 5s linear infinite;
+        }
+        .brand-name-en-sm { direction: ltr; font-size: 0.6rem; font-weight: 700; letter-spacing: 4.5px; text-transform: uppercase; color: var(--stone-400); padding-left: 4px; margin-top: 2px; }
+        .brand-divider { width: 80px; height: 3px; margin: 4px auto 16px; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--orange-400), transparent); }
+        /* ==================================================== */
+
+        /* ============ صفحات مقدمه (Onboarding) ============ */
+        .onboarding-wrapper {
+            max-width: 560px; margin: 0 auto; position: relative; min-height: calc(100vh - 24px);
+            display: flex; align-items: center; justify-content: center; padding: 20px 0;
+        }
+        .onboarding-card {
+            width: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px; padding: 36px 28px;
+            box-shadow: 0 25px 60px -12px rgba(249, 115, 22, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            position: relative; overflow: hidden; text-align: center;
+            animation: obCardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes obCardIn { from { opacity: 0; transform: translateY(30px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .onboarding-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, var(--orange-400), var(--orange-600), var(--orange-400));
+            background-size: 200% 100%; animation: shimmer 3s linear infinite;
+        }
+        .ob-slide { display: none; animation: obSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .ob-slide.active { display: block; }
+        @keyframes obSlideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        .ob-icon {
+            font-size: 4rem; margin-bottom: 18px; display: inline-block;
+            filter: drop-shadow(0 8px 16px rgba(249, 115, 22, 0.3));
+            animation: obIconFloat 3s ease-in-out infinite;
+        }
+        @keyframes obIconFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .ob-title {
+            font-size: 1.5rem; font-weight: 900; margin-bottom: 14px; line-height: 1.5;
+            background: linear-gradient(135deg, var(--orange-700), var(--orange-500));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .ob-subtitle { font-size: 0.9rem; color: var(--stone-600); font-weight: 600; line-height: 1.9; margin-bottom: 20px; }
+        .ob-badge {
+            display: inline-block; background: linear-gradient(135deg, var(--orange-50), var(--orange-100));
+            color: var(--orange-800); font-size: 0.72rem; font-weight: 800; padding: 7px 18px;
+            border-radius: 50px; margin-bottom: 20px; border: 1px solid var(--orange-200);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+        }
+        .ob-warning-box {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 2px solid #fca5a5;
+            border-radius: 20px; padding: 18px 16px; margin-bottom: 16px; text-align: right;
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.12);
+        }
+        .ob-warning-box.warning-yellow {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: #fcd34d;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.12);
+        }
+        .ob-warning-title {
+            font-size: 0.92rem; font-weight: 900; color: #991b1b; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .ob-warning-box.warning-yellow .ob-warning-title { color: #92400e; }
+        .ob-warning-text { font-size: 0.8rem; color: #7f1d1d; line-height: 1.9; font-weight: 600; }
+        .ob-warning-box.warning-yellow .ob-warning-text { color: #78350f; }
+        .ob-warning-text ul { padding-right: 20px; margin-top: 6px; }
+        .ob-warning-text li { margin-bottom: 6px; }
+        .ob-feature-list { text-align: right; margin: 16px 0; }
+        .ob-feature-item {
+            display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.7); border-radius: 16px; border: 1px solid var(--orange-100);
+            transition: transform 0.2s;
+        }
+        .ob-feature-item:active { transform: scale(0.98); }
+        .ob-feature-icon {
+            font-size: 1.4rem; flex-shrink: 0; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--orange-50), var(--orange-100));
+            border-radius: 12px;
+        }
+        .ob-feature-text { font-size: 0.8rem; color: var(--stone-700); font-weight: 600; line-height: 1.7; text-align: right; }
+        .ob-feature-text b { color: var(--orange-700); display: block; margin-bottom: 2px; font-size: 0.85rem; }
+        .ob-nav { display: flex; gap: 10px; margin-top: 24px; }
+        .ob-btn {
+            flex: 1; border: none; padding: 15px; border-radius: 16px; font-size: 0.95rem; font-weight: 800;
+            cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .ob-btn-next {
+            background: linear-gradient(135deg, var(--orange-500), var(--orange-700)); color: white;
+            box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.5); position: relative; overflow: hidden;
+        }
+        .ob-btn-next::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
+        .ob-btn-next:active { transform: scale(0.97); }
+        .ob-btn-next:active::before { left: 100%; }
+        .ob-btn-prev { background: var(--stone-100); color: var(--stone-600); border: 2px solid var(--stone-200); }
+        .ob-btn-prev:active { transform: scale(0.97); background: var(--stone-200); }
+        .ob-btn-skip { background: transparent; color: var(--stone-400); font-size: 0.8rem; padding: 15px 10px; flex: 0.6; }
+        .ob-dots { display: flex; justify-content: center; gap: 8px; margin-top: 22px; }
+        .ob-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--stone-200); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; }
+        .ob-dot.active { background: linear-gradient(135deg, var(--orange-500), var(--orange-600)); width: 28px; border-radius: 10px; box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4); }
+        .ob-agreement {
+            display: flex; align-items: flex-start; gap: 12px; background: rgba(255,255,255,0.7);
+            border: 2px solid var(--orange-200); border-radius: 16px; padding: 14px; margin-top: 16px;
+            cursor: pointer; transition: all 0.2s; text-align: right;
+        }
+        .ob-agreement:active { transform: scale(0.98); }
+        .ob-agreement input { width: 22px; height: 22px; accent-color: var(--orange-600); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+        .ob-agreement-text { font-size: 0.78rem; color: var(--stone-700); font-weight: 700; line-height: 1.8; }
+        .ob-btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+        .ob-version-badge {
+            position: absolute; top: 18px; left: 18px; background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e; font-size: 0.68rem; font-weight: 900; padding: 5px 12px; border-radius: 50px;
+            border: 1px solid #fcd34d; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+        }
+        /* ================================================ */
+
+        .container { max-width: 560px; margin: 0 auto; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 32px; padding: 24px; box-shadow: 0 25px 60px -12px rgba(249, 115, 22, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.9); position: relative; overflow: hidden; display: none; animation: obCardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange-400), var(--orange-600), var(--orange-400)); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .header { text-align: center; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 2px dashed var(--orange-200); }
+        .header h1 { color: var(--stone-900); font-size: 1.4rem; font-weight: 900; line-height: 1.5; background: linear-gradient(135deg, var(--orange-700), var(--orange-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .header .badge { display: inline-block; background: linear-gradient(135deg, var(--orange-50), var(--orange-100)); color: var(--orange-800); font-size: 0.72rem; font-weight: 800; padding: 6px 16px; border-radius: 50px; margin-top: 12px; border: 1px solid var(--orange-200); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15); }
+        .section-title { font-size: 0.95rem; font-weight: 800; color: var(--stone-900); margin: 24px 0 14px; display: flex; align-items: center; gap: 10px; padding-right: 14px; position: relative; }
+        .section-title::before { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 24px; background: linear-gradient(180deg, var(--orange-400), var(--orange-600)); border-radius: 4px; box-shadow: 0 0 12px rgba(249, 115, 22, 0.4); }
+        .row { display: flex; gap: 12px; margin-bottom: 14px; }
+        .form-group { flex: 1; min-width: 0; }
+        label { display: block; font-size: 0.82rem; margin-bottom: 8px; color: var(--stone-600); font-weight: 700; }
+        .tooltip-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: var(--orange-100); color: var(--orange-700); border-radius: 50%; font-size: 0.7rem; font-weight: 900; cursor: help; margin-right: 4px; position: relative; border: 1px solid var(--orange-200); transition: all 0.2s; user-select: none; flex-shrink: 0; }
+        .tooltip-icon:active { transform: scale(0.9); }
+        .tooltip-popup { position: fixed; background: var(--stone-900); color: #fff; padding: 16px 20px; border-radius: 14px; font-size: 0.82rem; font-weight: 500; max-width: 320px; text-align: right; z-index: 10000; box-shadow: 0 15px 40px rgba(0,0,0,0.3); line-height: 1.9; pointer-events: auto; animation: tooltipFadeIn 0.3s ease-out; opacity: 1; transition: opacity 0.4s; }
+        .tooltip-popup::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--stone-900); }
+        .tooltip-popup.top::after { bottom: auto; top: -8px; border-top: none; border-bottom: 8px solid var(--stone-900); }
+        .tooltip-popup.fade-out { opacity: 0; }
+        @keyframes tooltipFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        input[type="number"], select { width: 100%; padding: 14px 16px; border: 2px solid var(--stone-200); border-radius: 16px; font-size: 16px; outline: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(255, 255, 255, 0.8); color: var(--stone-900); -moz-appearance: textfield; appearance: none; font-weight: 600; -webkit-appearance: none; }
+        input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type="number"]:focus, select:focus { border-color: var(--orange-500); background: #fff; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); transform: translateY(-1px); }
+        .toggle-container { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, var(--orange-50), var(--orange-100)); padding: 18px 20px; border-radius: 20px; margin: 24px 0; border: 1px solid var(--orange-200); box-shadow: 0 4px 16px rgba(249, 115, 22, 0.1); }
+        .toggle-label { font-weight: 800; color: var(--orange-800); font-size: 0.9rem; }
+        .switch { position: relative; display: inline-block; width: 56px; height: 32px; flex-shrink: 0; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--stone-300); transition: .3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 34px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 3px; bottom: 3px; background-color: white; transition: .3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 50%; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
+        input:checked + .slider { background: linear-gradient(135deg, var(--orange-500), var(--orange-600)); box-shadow: 0 0 16px rgba(249, 115, 22, 0.4); }
+        input:checked + .slider:before { transform: translateX(-24px); left: auto; right: 3px; }
+        .pro-fields { display: none; background: rgba(250, 250, 249, 0.6); backdrop-filter: blur(10px); padding: 20px; border-radius: 22px; border: 2px dashed var(--orange-200); animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1); margin-bottom: 20px; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-submit { width: 100%; background: linear-gradient(135deg, var(--orange-500), var(--orange-700)); color: white; border: none; padding: 18px; border-radius: 18px; font-size: 1.05rem; font-weight: 900; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px -5px rgba(249, 115, 22, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2) inset; margin-top: 12px; position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none; }
+        .btn-submit::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
+        .btn-submit:active { transform: scale(0.97); box-shadow: 0 5px 15px -5px rgba(249, 115, 22, 0.5); }
+        .btn-submit:active::before { left: 100%; }
+        .result-box { display: none; margin-top: 32px; animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .tab-nav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px; border-bottom: 2px solid var(--stone-200); scrollbar-width: none; -ms-overflow-style: none; }
+        .tab-nav::-webkit-scrollbar { display: none; }
+        .tab-btn { background: var(--stone-100); border: none; padding: 10px 18px; border-radius: 14px; font-size: 0.82rem; font-weight: 800; color: var(--stone-500); cursor: pointer; white-space: nowrap; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none; }
+        .tab-btn:active { transform: scale(0.95); }
+        .tab-btn.active { background: linear-gradient(135deg, var(--orange-500), var(--orange-600)); color: white; box-shadow: 0 6px 20px -4px rgba(249, 115, 22, 0.5); transform: translateY(-2px); }
+        .tab-btn.hidden { display: none; }
+        .tab-content { display: none; animation: fadeInContent 0.4s ease-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeInContent { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .score-card { text-align: center; padding: 32px 20px; border-radius: 28px; margin-bottom: 24px; color: white; position: relative; overflow: hidden; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3); }
+        .score-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 60%); pointer-events: none; animation: pulse 4s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 0.8; } }
+        .score-value { font-size: 4rem; font-weight: 900; line-height: 1; margin: 12px 0; text-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .score-label { font-size: 1.15rem; font-weight: 800; opacity: 0.95; }
+        .goal-card { margin-bottom: 24px; border-radius: 24px; padding: 24px; position: relative; overflow: hidden; box-shadow: 0 15px 35px -10px rgba(0,0,0,0.2); animation: goalSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes goalSlideIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .goal-card::before { content: ''; position: absolute; top: -50%; right: -30%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); pointer-events: none; }
+        .goal-card.gain { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .goal-card.lose { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .goal-card.maintain { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .goal-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+        .goal-icon { font-size: 2.8rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); animation: goalIconBounce 2s ease-in-out infinite; }
+        @keyframes goalIconBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .goal-title { font-size: 1.3rem; font-weight: 900; line-height: 1.3; }
+        .goal-subtitle { font-size: 0.85rem; opacity: 0.9; font-weight: 600; }
+        .goal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.25); }
+        .goal-stat { text-align: center; }
+        .goal-stat-value { font-size: 1.4rem; font-weight: 900; line-height: 1.2; }
+        .goal-stat-label { font-size: 0.72rem; opacity: 0.85; font-weight: 600; margin-top: 2px; }
+        .goal-reason { margin-top: 14px; padding: 12px 14px; background: rgba(255,255,255,0.15); border-radius: 12px; font-size: 0.82rem; line-height: 1.7; backdrop-filter: blur(10px); }
+        .body-schema-card { margin-bottom: 24px; background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(250,250,249,0.9)); backdrop-filter: blur(10px); border-radius: 24px; padding: 24px; border: 2px solid var(--orange-100); box-shadow: 0 12px 32px -8px rgba(249, 115, 22, 0.15); animation: fadeInContent 0.5s ease-out; position: relative; overflow: hidden; }
+        .body-schema-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange-400), var(--orange-600), var(--orange-400)); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
+        .body-schema-title { font-size: 1rem; font-weight: 900; color: var(--stone-900); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; text-align: center; justify-content: center; }
+        .body-schema-container { display: flex; justify-content: center; align-items: center; padding: 20px 0; background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(249, 115, 22, 0.03)); border-radius: 16px; margin-bottom: 16px; }
+        .body-schema-container svg { max-width: 200px; height: auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1)); }
+        .body-schema-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--orange-100); }
+        .body-stat { text-align: center; padding: 12px 8px; background: linear-gradient(135deg, var(--orange-50), rgba(255,255,255,0.8)); border-radius: 14px; border: 1px solid var(--orange-100); transition: transform 0.2s; }
+        .body-stat:active { transform: scale(0.97); }
+        .body-stat-value { font-size: 1.05rem; font-weight: 900; color: var(--orange-700); line-height: 1.2; }
+        .body-stat-label { font-size: 0.7rem; color: var(--stone-600); font-weight: 700; margin-top: 4px; }
+        .age-warning { background: linear-gradient(135deg, var(--orange-50), var(--orange-100)); border: 1px solid var(--orange-300); color: var(--orange-900); padding: 16px; border-radius: 18px; font-size: 0.85rem; margin-bottom: 20px; display: flex; gap: 14px; align-items: flex-start; line-height: 1.7; box-shadow: 0 4px 16px rgba(249, 115, 22, 0.15); }
+        .age-warning-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .chart-container { margin: 24px 0; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); padding: 20px; border-radius: 22px; border: 1px solid var(--stone-200); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+        .chart-title { font-size: 0.88rem; font-weight: 800; margin-bottom: 16px; color: var(--stone-900); }
+        .progress-bar { width: 100%; height: 20px; border-radius: 12px; background: linear-gradient(to left, var(--danger) 15%, var(--warning) 30%, var(--success) 55%, var(--warning) 80%, var(--danger) 100%); position: relative; margin-bottom: 12px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.2); overflow: visible; }
+        .marker { position: absolute; top: -6px; width: 6px; height: 32px; background: var(--stone-900); border-radius: 4px; transition: left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 2px 10px rgba(0,0,0,0.4); z-index: 2; }
+        .marker::after { content: 'شما'; position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; background: var(--stone-900); color: #fff; padding: 3px 10px; border-radius: 8px; font-weight: 800; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .data-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); padding: 16px; border-radius: 18px; border: 1px solid var(--stone-200); transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .data-card:active { transform: scale(0.97); box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+        .data-card-title { font-size: 0.75rem; color: var(--stone-500); margin-bottom: 8px; font-weight: 700; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+        .data-card-val { font-size: 1.1rem; font-weight: 900; color: var(--stone-900); }
+        .data-card-sub { font-size: 0.72rem; color: var(--orange-700); margin-top: 6px; font-weight: 700; background: var(--orange-50); display: inline-block; padding: 3px 10px; border-radius: 8px; border: 1px solid var(--orange-100); }
+        .analysis-text { background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(250,250,249,0.6)); backdrop-filter: blur(10px); padding: 20px; border-radius: 20px; border-right: 5px solid var(--orange-500); font-size: 0.88rem; color: var(--stone-700); text-align: justify; line-height: 1.9; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+        .analysis-text h4 { margin-bottom: 12px; color: var(--stone-900); font-size: 1rem; font-weight: 800; }
+        .analysis-text ul { padding-right: 22px; margin-top: 12px; }
+        .analysis-text li { margin-bottom: 10px; }
+        .macro-bar { display: flex; height: 24px; border-radius: 14px; overflow: hidden; margin: 14px 0; box-shadow: inset 0 2px 6px rgba(0,0,0,0.15); }
+        .macro-p { background: linear-gradient(180deg, #f87171, #ef4444); height: 100%; transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .macro-c { background: linear-gradient(180deg, #60a5fa, #3b82f6); height: 100%; transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .macro-f { background: linear-gradient(180deg, #fbbf24, #f59e0b); height: 100%; transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .btn-share { width: 100%; background: linear-gradient(135deg, var(--stone-800), var(--stone-900)); color: white; border: none; padding: 16px; border-radius: 18px; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); margin-top: 20px; box-shadow: 0 10px 25px -5px rgba(28, 25, 23, 0.4); -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none; }
+        .btn-share:active { transform: scale(0.97); }
+        .source-box { background: rgba(245, 245, 244, 0.8); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; font-size: 0.78rem; color: var(--stone-600); line-height: 1.8; margin-top: 20px; border: 1px solid var(--stone-200); }
+        .percentile-chart { width: 100%; height: 320px; margin: 20px 0; position: relative; background: rgba(255,255,255,0.5); border-radius: 16px; padding: 10px; }
+        .percentile-chart svg { width: 100%; height: 100%; }
+        .percentile-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; justify-content: center; }
+        .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; color: var(--stone-600); }
+        .legend-color { width: 14px; height: 14px; border-radius: 4px; }
+        @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .body-schema-stats { grid-template-columns: 1fr; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } }
+    </style>
+</head>
+<body>
+
+<!-- تعریف گرادیان‌های مشترک لوگو -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <linearGradient id="bmFrame" x1="14" y1="6" x2="86" y2="108" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fdba74"/>
+            <stop offset="0.5" stop-color="#f97316"/>
+            <stop offset="1" stop-color="#c2410c"/>
+        </linearGradient>
+        <linearGradient id="bmGlass" x1="26" y1="14" x2="74" y2="78" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="0.55" stop-color="#fff7ed"/>
+            <stop offset="1" stop-color="#ffedd5"/>
+        </linearGradient>
+        <linearGradient id="bmHeart" x1="50" y1="30" x2="50" y2="62" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fb923c"/>
+            <stop offset="1" stop-color="#ea580c"/>
+        </linearGradient>
+    </defs>
+</svg>
+
+<!-- ==================== صفحات مقدمه و راهنما ==================== -->
+<div class="onboarding-wrapper" id="onboardingWrapper">
+    <div class="onboarding-card">
+        <div class="ob-version-badge">نسخه آزمایشی β</div>
+
+        <!-- اسلاید ۱: خوش‌آمدگویی با لوگوی برند -->
+        <div class="ob-slide active" id="obSlide1">
+            <div class="brand-hero">
+                <svg class="brand-icon" viewBox="0 0 100 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="44.5" y="82" width="11" height="26" rx="5.5" fill="url(#bmFrame)"/>
+                    <rect x="46.5" y="84" width="3" height="20" rx="1.5" fill="rgba(255,255,255,0.25)"/>
+                    <ellipse cx="50" cy="46" rx="36" ry="40" fill="url(#bmFrame)"/>
+                    <ellipse cx="50" cy="46" rx="29.5" ry="33.5" fill="url(#bmGlass)"/>
+                    <path d="M50 62 C50 62 33.5 50.5 33.5 39.5 C33.5 33 38.3 29.4 43 32 C45.7 33.5 48.1 36.2 50 38.8 C51.9 36.2 54.3 33.5 57 32 C61.7 29.4 66.5 33 66.5 39.5 C66.5 50.5 50 62 50 62 Z" fill="url(#bmHeart)"/>
+                    <path d="M38.5 46.5 L45 46.5 L48 40 L52.5 52.5 L55.5 46.5 L61.5 46.5" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M33 23.5 Q36.5 18 42.5 15.5" stroke="rgba(255,255,255,0.9)" stroke-width="3.6" stroke-linecap="round"/>
+                    <path d="M74 18 L75.4 21.6 L79 23 L75.4 24.4 L74 28 L72.6 24.4 L69 23 L72.6 21.6 Z" fill="#fdba74"/>
+                    <circle cx="24" cy="34" r="2" fill="#fdba74" opacity="0.7"/>
+                </svg>
+                <div class="brand-name-fa">آیینه سلامت</div>
+                <div class="brand-name-en">Health Mirror</div>
+                <div class="brand-tagline">سامانه جامع آنالیز کلینیکال سلامت و ترکیب بدنی</div>
+            </div>
+            <span class="ob-badge">استانداردهای WHO, AHA, ISSN & NSF</span>
+            <p class="ob-subtitle">
+                به <b>آیینه سلامت</b> خوش آمدید؛ سامانه‌ای هوشمند که همچون یک آینه، تصویری دقیق و شفاف از وضعیت جسمانی شما ارائه می‌دهد.
+            </p>
+            <div class="ob-feature-list">
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">📊</div>
+                    <div class="ob-feature-text"><b>آنالیز BMI پیشرفته</b>بر اساس نمودارهای رشد WHO برای نوجوانان و استانداردهای بزرگسالان</div>
+                </div>
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">🎯</div>
+                    <div class="ob-feature-text"><b>هدف‌گذاری هوشمند</b>تعیین خودکار هدف (کاهش وزن، عضله‌سازی یا حفظ وزن)</div>
+                </div>
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">🍽️</div>
+                    <div class="ob-feature-text"><b>برنامه تغذیه‌ای</b>محاسبه دقیق کالری، پروتئین و درشت‌مغذی‌ها</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- اسلاید ۲: هشدارهای مهم -->
+        <div class="ob-slide" id="obSlide2">
+            <div class="ob-icon">⚠️</div>
+            <div class="ob-title">هشدارهای مهم</div>
+            <div class="ob-warning-box">
+                <div class="ob-warning-title">🚨 نسخه آزمایشی (Beta)</div>
+                <div class="ob-warning-text">
+                    این برنامه در <b>نسخه آزمایشی</b> قرار دارد و ممکن است دارای خطا، باگ یا محاسبات نادرست باشد. نتایج ارائه‌شده ممکن است در برخی موارد دقیق نباشند.
+                </div>
+            </div>
+            <div class="ob-warning-box warning-yellow">
+                <div class="ob-warning-title">⚕️ جایگزین پزشک نیست</div>
+                <div class="ob-warning-text">
+                    <ul>
+                        <li>این سامانه <b>صرفاً جنبه اطلاع‌رسانی و آموزشی</b> دارد</li>
+                        <li>نتایج به هیچ وجه جایگزین تشخیص، مشاوره یا درمان پزشکی نیست</li>
+                        <li>قبل از هرگونه تغییر در رژیم غذایی یا برنامه ورزشی، حتماً با پزشک یا متخصص تغذیه مشورت کنید</li>
+                        <li>در صورت داشتن بیماری‌های زمینه‌ای، استفاده از این برنامه بدون نظارت پزشک توصیه نمی‌شود</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- اسلاید ۳: محدودیت‌ها و دقت -->
+        <div class="ob-slide" id="obSlide3">
+            <div class="ob-icon">🔍</div>
+            <div class="ob-title">محدودیت‌ها و دقت</div>
+            <div class="ob-warning-box warning-yellow">
+                <div class="ob-warning-title">📉 احتمال خطای محاسباتی</div>
+                <div class="ob-warning-text">
+                    <ul>
+                        <li>فرمول‌های استفاده‌شده، تخمینی هستند و ممکن است برای همه افراد دقیق نباشند</li>
+                        <li>شرایط خاص مانند بارداری، بیماری‌های هورمونی و معلولیت‌ها در محاسبات لحاظ نشده‌اند</li>
+                        <li>نتایج بر اساس داده‌های واردشده توسط شماست؛ ورود اطلاعات نادرست منجر به نتایج نادرست می‌شود</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ob-feature-list">
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">📏</div>
+                    <div class="ob-feature-text"><b>اندازه‌گیری دقیق</b>برای بهترین نتیجه، قد، وزن و دور اندام را با دقت و بدون لباس اضافی اندازه بگیرید</div>
+                </div>
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">🩺</div>
+                    <div class="ob-feature-text"><b>مشورت تخصصی</b>برای تفسیر دقیق نتایج و برنامه‌ریزی سلامت، به متخصص مراجعه کنید</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- اسلاید ۴: راهنمای استفاده -->
+        <div class="ob-slide" id="obSlide4">
+            <div class="ob-icon">📖</div>
+            <div class="ob-title">راهنمای استفاده</div>
+            <div class="ob-feature-list">
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">1️⃣</div>
+                    <div class="ob-feature-text"><b>اطلاعات پایه</b>جنسیت، سن، قد و وزن خود را با دقت وارد کنید. این اطلاعات برای محاسبات ضروری هستند.</div>
+                </div>
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">2️⃣</div>
+                    <div class="ob-feature-text"><b>حالت تخصصی (اختیاری)</b>برای تحلیل کامل‌تر شامل درصد چربی، توده عضلانی و شاخص‌های قلبی، حالت تخصصی را فعال کنید.</div>
+                </div>
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">3️⃣</div>
+                    <div class="ob-feature-text"><b>پردازش و تحلیل</b>روی دکمه «پردازش کلینیکال» بزنید و نتایج را در تب‌های مختلف مشاهده کنید.</div>
+                </div>
+                <div class="ob-feature-item">
+                    <div class="ob-feature-icon">4️⃣</div>
+                    <div class="ob-feature-text"><b>کپی گزارش</b>می‌توانید گزارش کامل را برای ارسال به پزشک یا مربی خود کپی کنید.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- اسلاید ۵: تأیید و شروع -->
+        <div class="ob-slide" id="obSlide5">
+            <div class="ob-icon">✅</div>
+            <div class="ob-title">آماده شروع هستید؟</div>
+            <p class="ob-subtitle">
+                با تأیید موارد زیر، وارد <b>آیینه سلامت</b> شده و از امکانات آن استفاده کنید.
+            </p>
+            <div class="ob-warning-box warning-yellow">
+                <div class="ob-warning-text" style="font-size: 0.82rem;">
+                    ⚠️ یادآوری: این برنامه نسخه آزمایشی است، ممکن است خطا داشته باشد و به هیچ وجه جایگزین مشاوره پزشکی نیست.
+                </div>
+            </div>
+            <label class="ob-agreement" for="obAgreeCheckbox">
+                <input type="checkbox" id="obAgreeCheckbox" onchange="checkAgreement()">
+                <span class="ob-agreement-text">
+                    متوجه شدم که این برنامه <b>نسخه آزمایشی</b> است، ممکن است دارای خطا باشد و نتایج آن جایگزین تشخیص و مشاوره پزشکی <b>نیست</b>. مسئولیت استفاده از نتایج بر عهده خودم است.
+                </span>
+            </label>
+        </div>
+
+        <!-- ناوبری -->
+        <div class="ob-nav">
+            <button type="button" class="ob-btn ob-btn-prev" id="obBtnPrev" onclick="obPrevSlide()" style="display: none;">→ قبلی</button>
+            <button type="button" class="ob-btn ob-btn-next" id="obBtnNext" onclick="obNextSlide()">بعدی ←</button>
+        </div>
+        <div class="ob-dots" id="obDots">
+            <div class="ob-dot active" onclick="obGoToSlide(0)"></div>
+            <div class="ob-dot" onclick="obGoToSlide(1)"></div>
+            <div class="ob-dot" onclick="obGoToSlide(2)"></div>
+            <div class="ob-dot" onclick="obGoToSlide(3)"></div>
+            <div class="ob-dot" onclick="obGoToSlide(4)"></div>
+        </div>
+    </div>
+</div>
+<!-- ================================================================ -->
+
+<div class="container" id="mainContainer">
+    <div class="header">
+        <div class="brand-header">
+            <svg class="brand-icon" viewBox="0 0 100 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="44.5" y="82" width="11" height="26" rx="5.5" fill="url(#bmFrame)"/>
+                <rect x="46.5" y="84" width="3" height="20" rx="1.5" fill="rgba(255,255,255,0.25)"/>
+                <ellipse cx="50" cy="46" rx="36" ry="40" fill="url(#bmFrame)"/>
+                <ellipse cx="50" cy="46" rx="29.5" ry="33.5" fill="url(#bmGlass)"/>
+                <path d="M50 62 C50 62 33.5 50.5 33.5 39.5 C33.5 33 38.3 29.4 43 32 C45.7 33.5 48.1 36.2 50 38.8 C51.9 36.2 54.3 33.5 57 32 C61.7 29.4 66.5 33 66.5 39.5 C66.5 50.5 50 62 50 62 Z" fill="url(#bmHeart)"/>
+                <path d="M38.5 46.5 L45 46.5 L48 40 L52.5 52.5 L55.5 46.5 L61.5 46.5" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M33 23.5 Q36.5 18 42.5 15.5" stroke="rgba(255,255,255,0.9)" stroke-width="3.6" stroke-linecap="round"/>
+                <path d="M74 18 L75.4 21.6 L79 23 L75.4 24.4 L74 28 L72.6 24.4 L69 23 L72.6 21.6 Z" fill="#fdba74"/>
+                <circle cx="24" cy="34" r="2" fill="#fdba74" opacity="0.7"/>
+            </svg>
+            <div class="brand-txt">
+                <div class="brand-name-fa-sm">آیینه سلامت</div>
+                <div class="brand-name-en-sm">Health Mirror</div>
+            </div>
+        </div>
+        <div class="brand-divider"></div>
+        <h1>سامانه جامع آنالیز کلینیکال سلامت و ترکیب بدنی</h1>
+        <span class="badge">استانداردهای WHO, AHA, ISSN & NSF</span>
+    </div>
+    <div class="section-title">اطلاعات بیومتریک اصلی</div>
+    <div class="row">
+        <div class="form-group">
+            <label>جنسیت بیولوژیک <span class="tooltip-icon" data-tip="جنسیت بیولوژیک برای محاسبه دقیق متابولیسم، درصد چربی و نمودارهای رشد استفاده می‌شود.">؟</span></label>
+            <select id="gender" onchange="toggleGenderFields()">
+                <option value="male">مرد (Male)</option>
+                <option value="female">زن (Female)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>سن (سال) <span class="tooltip-icon" data-tip="سن دقیق شما به سال. برای افراد زیر 20 سال از نمودارهای رشد WHO استفاده می‌شود.">؟</span></label>
+            <input type="number" id="age" placeholder="مثلاً 26" inputmode="numeric" autocomplete="off">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label>قد ایستاده (cm) <span class="tooltip-icon" data-tip="قد ایستاده بدون کفش، به سانتی‌متر.">؟</span></label>
+            <input type="number" id="height" placeholder="مثلاً 178" inputmode="numeric" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label>وزن خالص (kg) <span class="tooltip-icon" data-tip="وزن بدن بدون لباس و کفش، به کیلوگرم.">؟</span></label>
+            <input type="number" id="weight" placeholder="مثلاً 74" inputmode="decimal" autocomplete="off">
+        </div>
+    </div>
+    <div class="toggle-container">
+        <span class="toggle-label">فعال‌سازی حالت تخصصی و ارزیابی عضلانی</span>
+        <label class="switch">
+            <input type="checkbox" id="proModeToggle" onchange="toggleProMode()">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="pro-fields" id="proFields">
+        <div class="section-title" style="margin-top:0;">آنتروپومتری و اسکلت‌بندی</div>
+        <div class="row">
+            <div class="form-group">
+                <label>دور مچ دست (cm) <span class="tooltip-icon" data-tip="دور مچ دست غیر غالب را اندازه بگیرید.">؟</span></label>
+                <input type="number" id="wrist" placeholder="مثلاً 17" inputmode="decimal">
+            </div>
+            <div class="form-group">
+                <label>دور گردن (cm) <span class="tooltip-icon" data-tip="متر را درست زیر سیب گلو دور گردن حلقه کنید.">؟</span></label>
+                <input type="number" id="neck" placeholder="مثلاً 38" inputmode="decimal">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>دور شکم / ناف (cm) <span class="tooltip-icon" data-tip="متر را روی ناف یا پهن‌ترین قسمت شکم در حالت بازدم عادی نگه دارید.">؟</span></label>
+                <input type="number" id="waist" placeholder="مثلاً 85" inputmode="decimal">
+            </div>
+            <div class="form-group" id="hipGroup" style="display: none;">
+                <label>دور لگن (cm) <span class="tooltip-icon" data-tip="متر را دور برجسته‌ترین قسمت باسن حلقه کنید.">؟</span></label>
+                <input type="number" id="hip" placeholder="مثلاً 95" inputmode="decimal">
+            </div>
+        </div>
+        <div class="section-title">سطح فعالیت و متابولیسم</div>
+        <div class="form-group" style="margin-bottom: 12px;">
+            <label>میزان تحرک و ورزش هفتگی <span class="tooltip-icon" data-tip="ضریب فعالیت (PAL) برای محاسبه TDEE استفاده می‌شود.">؟</span></label>
+            <select id="activity">
+                <option value="1.2">بی‌تحرک / پشت‌میزنشین کاملاً</option>
+                <option value="1.375">فعالیت سبک (۱ تا ۳ روز در هفته)</option>
+                <option value="1.55">تمرین متوسط (۳ تا ۵ روز در هفته)</option>
+                <option value="1.725">تمرین سنگین (۶ تا ۷ روز در هفته)</option>
+                <option value="1.9">ورزشکار حرفه‌ای / شغل فیزیکی سخت</option>
+            </select>
+        </div>
+        <div class="section-title">غربالگری بالینی (اختیاری)</div>
+        <div class="row">
+            <div class="form-group">
+                <label>فشارخون (mmHg) <span class="tooltip-icon" data-tip="عدد بالا (سیستولیک) و عدد پایین (دیاستولیک).">؟</span></label>
+                <div style="display:flex; gap:6px;">
+                    <input type="number" id="bpSys" placeholder="بالا (120)" inputmode="numeric">
+                    <input type="number" id="bpDia" placeholder="پایین (80)" inputmode="numeric">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>قند خون ناشتا (mg/dL) <span class="tooltip-icon" data-tip="حداقل 8 ساعت پس از آخرین وعده غذایی.">؟</span></label>
+                <input type="number" id="fbs" placeholder="مثلاً 95" inputmode="numeric">
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn-submit" onclick="runComprehensiveAnalysis()">پردازش کلینیکال و صدور کارنامه سلامت</button>
+    <div class="result-box" id="resultBox">
+        <div class="tab-nav">
+            <button type="button" class="tab-btn active" id="tabBtn-summary" onclick="switchTab('tab-summary', this)">نمایه کلی</button>
+            <button type="button" class="tab-btn" id="tabBtn-metabolism" onclick="switchTab('tab-metabolism', this)">تغذیه و سوخت‌وساز</button>
+            <button type="button" class="tab-btn hidden" id="tabBtn-bodycomp" onclick="switchTab('tab-bodycomp', this)">ترکیب بدنی</button>
+            <button type="button" class="tab-btn hidden" id="tabBtn-cardio" onclick="switchTab('tab-cardio', this)">سلامت قلبی</button>
+            <button type="button" class="tab-btn hidden" id="tabBtn-ref" onclick="switchTab('tab-ref', this)">رفرنس‌ها</button>
+        </div>
+        <div class="tab-content active" id="tab-summary">
+            <div id="ageWarningBox" class="age-warning" style="display: none;">
+                <span class="age-warning-icon">📌</span>
+                <div id="ageWarningText"></div>
+            </div>
+            <div id="goalCard" class="goal-card" style="display: none;"></div>
+            <div id="bodySchemaCard" class="body-schema-card" style="display: none;"></div>
+            <div class="score-card" id="scoreCard">
+                <div class="score-label" id="mainStatus">در حال محاسبه...</div>
+                <div class="score-value" id="mainScore">--</div>
+                <div style="font-size: 0.9rem; opacity: 0.9; font-weight: 600;" id="scoreSubtext">شاخص توده بدنی (BMI)</div>
+            </div>
+            <div id="percentileChartContainer" style="display: none;">
+                <div class="chart-container">
+                    <div class="chart-title">📊 نمودار صدک‌های BMI بر اساس سن و جنسیت (WHO 2007)</div>
+                    <div class="percentile-chart" id="percentileChart"></div>
+                    <div class="percentile-legend" id="percentileLegend"></div>
+                </div>
+            </div>
+            <div id="adultChartContainer" style="display: none;">
+                <div class="chart-container">
+                    <div class="chart-title">📍 موقعیت دقیق در طیف استاندارد WHO</div>
+                    <div class="progress-bar">
+                        <div class="marker" id="bmiMarker" style="left: 50%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--stone-500); margin-top: 8px; font-weight: 700;">
+                        <span>کمبود وزن</span>
+                        <span>نرمال</span>
+                        <span>اضافه وزن</span>
+                        <span>چاقی</span>
+                    </div>
+                </div>
+            </div>
+            <div class="data-grid" id="summaryGrid"></div>
+            <div class="analysis-text" id="summaryAnalysis"></div>
+        </div>
+        <div class="tab-content" id="tab-bodycomp">
+            <div class="data-grid" id="compGrid"></div>
+            <div class="analysis-text" id="compAnalysis"></div>
+        </div>
+        <div class="tab-content" id="tab-metabolism">
+            <div class="data-grid" id="metaGrid"></div>
+            <div class="chart-container">
+                <div class="chart-title">🍽 توزیع درشت‌مغذی‌ها (ماکرونوترینت‌ها)</div>
+                <div class="macro-bar">
+                    <div class="macro-p" id="macroPBar" style="width: 30%;"></div>
+                    <div class="macro-c" id="macroCBar" style="width: 45%;"></div>
+                    <div class="macro-f" id="macroFBar" style="width: 25%;"></div>
+                </div>
+                <div style="display:flex; justify-content:space-around; font-size:0.8rem; font-weight:800; margin-top: 10px;">
+                    <span style="color:#ef4444;">پروتئین: <span id="pGrams">--</span>g</span>
+                    <span style="color:#3b82f6;">کربوهیدرات: <span id="cGrams">--</span>g</span>
+                    <span style="color:#f59e0b;">چربی: <span id="fGrams">--</span>g</span>
+                </div>
+            </div>
+            <div class="analysis-text" id="metaAnalysis"></div>
+        </div>
+        <div class="tab-content" id="tab-cardio">
+            <div class="data-grid" id="cardioGrid"></div>
+            <div class="analysis-text" id="cardioAnalysis"></div>
+        </div>
+        <div class="tab-content" id="tab-ref">
+            <div class="source-box">
+                <b>مستندات علمی:</b><br><br>
+                • <b>WHO Growth Reference (2007):</b> مرجع رشد BMI-for-age برای ۵ تا ۱۹ سال<br>
+                • <b>CDC Growth Charts (2000):</b> نمودارهای صدک برای ۲ تا ۴ سال<br>
+                • <b>WHO/FAO/UNU (2004):</b> نیاز پروتئین بر اساس سن و وزن<br>
+                • <b>ISSN Position Stand:</b> پروتئین و ورزش (2017)<br>
+                • <b>WHO (Adults):</b> رده‌بندی BMI برای بزرگسالان<br>
+                • <b>Mifflin-St Jeor (1990):</b> محاسبه BMR<br>
+                • <b>U.S. Navy:</b> سنجش درصد چربی<br>
+                • <b>FFMI Corrected:</b> شاخص توده عضلانی<br>
+                • <b>AHA/ACC 2017:</b> دسته‌بندی فشارخون<br>
+                • <b>Tanaka Formula:</b> حداکثر ضربان قلب<br>
+                • <b>NSF:</b> توصیه‌های خواب
+            </div>
+        </div>
+        <button type="button" class="btn-share" onclick="copyFormattedReport()">
+            📋 کپی گزارش برای ارسال
+        </button>
+    </div>
+</div>
+
+<script>
+    /* ============ منطق صفحات مقدمه ============ */
+    let obCurrentSlide = 0;
+    const obTotalSlides = 5;
+
+    function obShowSlide(index) {
+        document.querySelectorAll('.ob-slide').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.ob-dot').forEach(d => d.classList.remove('active'));
+        document.getElementById('obSlide' + (index + 1)).classList.add('active');
+        document.querySelectorAll('.ob-dot')[index].classList.add('active');
+
+        const prevBtn = document.getElementById('obBtnPrev');
+        const nextBtn = document.getElementById('obBtnNext');
+
+        prevBtn.style.display = index === 0 ? 'none' : 'block';
+
+        if (index === obTotalSlides - 1) {
+            nextBtn.innerHTML = '🚀 ورود به سامانه';
+            checkAgreement();
+        } else {
+            nextBtn.innerHTML = 'بعدی ←';
+            nextBtn.disabled = false;
+        }
+        obCurrentSlide = index;
+    }
+
+    function obNextSlide() {
+        if (obCurrentSlide < obTotalSlides - 1) {
+            obShowSlide(obCurrentSlide + 1);
+        } else {
+            const checkbox = document.getElementById('obAgreeCheckbox');
+            if (!checkbox.checked) {
+                alert('⚠️ برای ورود به سامانه، لطفاً ابتدا موارد هشدار را تأیید کنید.');
+                return;
+            }
+            document.getElementById('onboardingWrapper').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    function obPrevSlide() {
+        if (obCurrentSlide > 0) obShowSlide(obCurrentSlide - 1);
+    }
+
+    function obGoToSlide(index) {
+        obShowSlide(index);
+    }
+
+    function checkAgreement() {
+        const checkbox = document.getElementById('obAgreeCheckbox');
+        const nextBtn = document.getElementById('obBtnNext');
+        if (obCurrentSlide === obTotalSlides - 1) {
+            nextBtn.disabled = !checkbox.checked;
+        }
+    }
+    /* ========================================== */
+
+    const WHO_LMS = {
+        male: [{age:5,L:0.4834,M:15.4,S:0.10038},{age:6,L:0.4834,M:15.6,S:0.10038},{age:7,L:0.4834,M:15.9,S:0.10038},{age:8,L:0.4834,M:16.3,S:0.10038},{age:9,L:0.4834,M:16.7,S:0.10038},{age:10,L:0.4834,M:17.1,S:0.10038},{age:11,L:0.4834,M:17.5,S:0.10038},{age:12,L:0.4834,M:18.0,S:0.10038},{age:13,L:0.4834,M:18.6,S:0.10038},{age:14,L:0.4834,M:19.3,S:0.10038},{age:15,L:0.4834,M:20.0,S:0.10038},{age:16,L:0.4834,M:20.7,S:0.10038},{age:17,L:0.4834,M:21.3,S:0.10038},{age:18,L:0.4834,M:21.7,S:0.10038},{age:19,L:0.4834,M:22.0,S:0.10038}],
+        female: [{age:5,L:0.4834,M:15.3,S:0.10038},{age:6,L:0.4834,M:15.5,S:0.10038},{age:7,L:0.4834,M:15.8,S:0.10038},{age:8,L:0.4834,M:16.2,S:0.10038},{age:9,L:0.4834,M:16.6,S:0.10038},{age:10,L:0.4834,M:17.0,S:0.10038},{age:11,L:0.4834,M:17.1,S:0.10038},{age:12,L:0.4834,M:17.8,S:0.10038},{age:13,L:0.4834,M:18.5,S:0.10038},{age:14,L:0.4834,M:19.2,S:0.10038},{age:15,L:0.4834,M:19.8,S:0.10038},{age:16,L:0.4834,M:20.3,S:0.10038},{age:17,L:0.4834,M:20.7,S:0.10038},{age:18,L:0.4834,M:21.0,S:0.10038},{age:19,L:0.4834,M:21.3,S:0.10038}]
+    };
+    const CDC_LMS_YOUNG = {
+        male: [{age:2,L:-0.3053,M:15.9579,S:0.08966},{age:3,L:-0.2041,M:15.6536,S:0.08931},{age:4,L:-0.0859,M:15.4779,S:0.08952}],
+        female: [{age:2,L:-0.0573,M:15.6010,S:0.09062},{age:3,L:0.0766,M:15.2432,S:0.09079},{age:4,L:0.2021,M:15.0348,S:0.09141}]
+    };
+
+    function getLMS(gender, age) {
+        if (age >= 5 && age <= 19) {
+            const data = WHO_LMS[gender];
+            if (age <= 5) return {...data[0], age};
+            if (age >= 19) return {...data[data.length - 1], age};
+            for (let i = 0; i < data.length - 1; i++) {
+                if (age >= data[i].age && age <= data[i+1].age) {
+                    const t = (age - data[i].age) / (data[i+1].age - data[i].age);
+                    return { age, L: data[i].L + t * (data[i+1].L - data[i].L), M: data[i].M + t * (data[i+1].M - data[i].M), S: data[i].S + t * (data[i+1].S - data[i].S) };
+                }
+            }
+            return {...data[data.length - 1], age};
+        } else if (age >= 2 && age < 5) {
+            const data = CDC_LMS_YOUNG[gender];
+            if (age <= 2) return {...data[0], age};
+            if (age >= 4) return {...data[data.length - 1], age};
+            for (let i = 0; i < data.length - 1; i++) {
+                if (age >= data[i].age && age <= data[i+1].age) {
+                    const t = (age - data[i].age) / (data[i+1].age - data[i].age);
+                    return { age, L: data[i].L + t * (data[i+1].L - data[i].L), M: data[i].M + t * (data[i+1].M - data[i].M), S: data[i].S + t * (data[i+1].S - data[i].S) };
+                }
+            }
+            return {...data[data.length - 1], age};
+        }
+        return null;
+    }
+
+    function bmiToZScore(bmi, L, M, S) {
+        if (L === 0) return Math.log(bmi / M) / S;
+        return (Math.pow(bmi / M, L) - 1) / (L * S);
+    }
+    function zScoreToBMI(z, L, M, S) {
+        if (L === 0) return M * Math.exp(S * z);
+        return M * Math.pow(1 + L * S * z, 1 / L);
+    }
+    function zToPercentile(z) {
+        const a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741, a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
+        const sign = z < 0 ? -1 : 1;
+        const x = Math.abs(z) / Math.sqrt(2);
+        const t = 1.0 / (1.0 + p * x);
+        const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+        return 0.5 * (1.0 + sign * y) * 100;
+    }
+    function percentileToZ(p) {
+        const pNorm = p / 100;
+        if (pNorm <= 0.0001) return -4;
+        if (pNorm >= 0.9999) return 4;
+        if (pNorm < 0.5) {
+            const t = Math.sqrt(-2 * Math.log(pNorm));
+            const c0 = 2.515517, c1 = 0.802853, c2 = 0.010328, d1 = 1.432788, d2 = 0.189269, d3 = 0.001308;
+            return -(t - (c0 + c1*t + c2*t*t) / (1 + d1*t + d2*t*t + d3*t*t*t));
+        } else {
+            const t = Math.sqrt(-2 * Math.log(1 - pNorm));
+            const c0 = 2.515517, c1 = 0.802853, c2 = 0.010328, d1 = 1.432788, d2 = 0.189269, d3 = 0.001308;
+            return t - (c0 + c1*t + c2*t*t) / (1 + d1*t + d2*t*t + d3*t*t*t);
+        }
+    }
+
+    function determineSmartGoal(bmi, percentile, age, gender, isTeen, bodyFatPercent, isProMode, activity) {
+        let goal = 'maintain', reason = '';
+        if (isTeen) {
+            if (percentile >= 95) { goal = 'lose'; reason = `صدک ${percentile.toFixed(0)} نشان‌دهنده چاقی است.`; }
+            else if (percentile >= 85) { goal = 'lose'; reason = `صدک ${percentile.toFixed(0)} در محدوده اضافه وزن است.`; }
+            else if (percentile < 10) { goal = 'gain'; reason = `صدک ${percentile.toFixed(0)} نشان‌دهنده کمبود وزن است.`; }
+            else if (percentile < 25 && activity >= 1.55) { goal = 'gain'; reason = `صدک ${percentile.toFixed(0)} و فعالیت بالا: پتانسیل عضله‌سازی.`; }
+            else { goal = 'maintain'; reason = `صدک ${percentile.toFixed(0)} در محدوده سالم است.`; }
+            if (isProMode && bodyFatPercent > 0) {
+                const bfHighTeen = gender === 'male' ? 25 : 32;
+                if (bodyFatPercent > bfHighTeen && goal !== 'lose') { goal = 'lose'; reason = `درصد چربی ${bodyFatPercent}% بالاتر از حد سالم.`; }
+            }
+        } else {
+            const bfNormalHigh = gender === 'male' ? 25 : 32;
+            const bfNormalLow = gender === 'male' ? 10 : 18;
+            if (isProMode && bodyFatPercent > 0) {
+                if (bodyFatPercent > bfNormalHigh) { goal = 'lose'; reason = `درصد چربی ${bodyFatPercent}% بالاتر از محدوده سالم.`; }
+                else if (bodyFatPercent <= bfNormalLow && bmi < 24) { goal = 'gain'; reason = `درصد چربی ${bodyFatPercent}% بسیار پایین.`; }
+                else if (bodyFatPercent < (gender === 'male' ? 18 : 25) && bmi >= 20 && bmi < 25 && activity >= 1.375) { goal = 'gain'; reason = `درصد چربی ${bodyFatPercent}% مناسب. پتانسیل عضله‌سازی.`; }
+                else if (bodyFatPercent >= (gender === 'male' ? 20 : 28) && bmi >= 23) { goal = 'lose'; reason = `درصد چربی ${bodyFatPercent}% بالاتر از بهینه.`; }
+            }
+            if (goal === 'maintain') {
+                if (bmi >= 30) { goal = 'lose'; reason = `BMI ${bmi} در محدوده چاقی کلاس 1.`; }
+                else if (bmi >= 27) { goal = 'lose'; reason = `BMI ${bmi} در محدوده اضافه وزن بالا.`; }
+                else if (bmi >= 25) { goal = 'lose'; reason = `BMI ${bmi} در محدوده اضافه وزن.`; }
+                else if (bmi < 18.5) { goal = 'gain'; reason = `BMI ${bmi} نشان‌دهنده کمبود وزن.`; }
+                else if (bmi >= 18.5 && bmi < 21 && gender === 'male' && activity >= 1.375) { goal = 'gain'; reason = `BMI ${bmi} سالم اما نزدیک به لاغری.`; }
+                else if (bmi >= 18.5 && bmi < 20 && gender === 'female' && activity >= 1.375) { goal = 'gain'; reason = `BMI ${bmi} و فعالیت مناسب: پتانسیل عضله‌سازی.`; }
+                else if (age > 40 && bmi >= 24) { goal = 'lose'; reason = `در سن بالای 40، BMI ${bmi} ریسک متابولیک را افزایش می‌دهد.`; }
+                else { goal = 'maintain'; reason = `BMI ${bmi} در محدوده ایده‌آل.`; }
+            }
+        }
+        return { goal, reason };
+    }
+
+    // ✅ تابع بهبودیافته محاسبه تغذیه - ماتریس دقیق (هدف × فعالیت)
+    function calculateNutrition(targetCalories, weight, age, gender, goal, isTeen, activity, bodyFatPercent, isProMode) {
+        let proteinGrams, fatRatio, carbRatio;
+        
+        let lbm = weight;
+        if (isProMode && bodyFatPercent > 0) {
+            lbm = weight * (1 - bodyFatPercent / 100);
+        }
+        
+        // ✅ ماتریس دقیق پروتئین بر اساس (هدف × سطح فعالیت)
+        let proteinMultiplier;
+        
+        if (isTeen) {
+            if (goal === 'gain') {
+                if (activity >= 1.725) proteinMultiplier = 2.4;
+                else if (activity >= 1.55) proteinMultiplier = 2.2;
+                else if (activity >= 1.375) proteinMultiplier = 2.0;
+                else proteinMultiplier = 1.8;
+            } else if (goal === 'lose') {
+                if (activity >= 1.725) proteinMultiplier = 2.2;
+                else if (activity >= 1.55) proteinMultiplier = 2.0;
+                else if (activity >= 1.375) proteinMultiplier = 1.8;
+                else proteinMultiplier = 1.6;
+            } else {
+                if (activity >= 1.725) proteinMultiplier = 1.8;
+                else if (activity >= 1.55) proteinMultiplier = 1.6;
+                else if (activity >= 1.375) proteinMultiplier = 1.4;
+                else proteinMultiplier = 1.2;
+            }
+        } else {
+            if (goal === 'gain') {
+                if (activity >= 1.9) proteinMultiplier = 2.4;
+                else if (activity >= 1.725) proteinMultiplier = 2.2;
+                else if (activity >= 1.55) proteinMultiplier = 2.0;
+                else if (activity >= 1.375) proteinMultiplier = 1.8;
+                else proteinMultiplier = 1.6;
+            } else if (goal === 'lose') {
+                if (activity >= 1.9) proteinMultiplier = 2.4;
+                else if (activity >= 1.725) proteinMultiplier = 2.2;
+                else if (activity >= 1.55) proteinMultiplier = 2.0;
+                else if (activity >= 1.375) proteinMultiplier = 1.8;
+                else proteinMultiplier = 1.6;
+            } else {
+                if (activity >= 1.9) proteinMultiplier = 1.8;
+                else if (activity >= 1.725) proteinMultiplier = 1.6;
+                else if (activity >= 1.55) proteinMultiplier = 1.4;
+                else if (activity >= 1.375) proteinMultiplier = 1.2;
+                else proteinMultiplier = 1.0;
+            }
+        }
+        
+        proteinGrams = Math.round(lbm * proteinMultiplier);
+        
+        if (goal === 'gain') {
+            fatRatio = 0.25; carbRatio = 0.75;
+        } else if (goal === 'lose') {
+            fatRatio = 0.35; carbRatio = 0.65;
+        } else {
+            fatRatio = 0.30; carbRatio = 0.70;
+        }
+        
+        let proteinPerKg = (proteinGrams / weight).toFixed(1);
+        let pCalories = proteinGrams * 4;
+        let remainingCalories = Math.max(0, targetCalories - pCalories);
+        let fGrams = Math.round((remainingCalories * fatRatio) / 9);
+        let cGrams = Math.round((remainingCalories * carbRatio) / 4);
+        
+        return { pGrams: proteinGrams, fGrams, cGrams, proteinPerKg, targetCalories, lbm: lbm.toFixed(1), proteinMultiplier };
+    }
+
+    function calculateWaterNeeds(weight, activity, cGrams) {
+        let waterBase = weight * 0.03;
+        let activityBonus = 0;
+        if (activity >= 1.9) activityBonus = 0.6;
+        else if (activity >= 1.725) activityBonus = 0.45;
+        else if (activity >= 1.55) activityBonus = 0.3;
+        else if (activity >= 1.375) activityBonus = 0.15;
+        let carbBonus = (cGrams / 250) * 0.15;
+        let totalWater = waterBase + activityBonus + carbBonus;
+        totalWater = Math.max(totalWater, 1.5);
+        totalWater = Math.min(totalWater, 3.5);
+        return parseFloat(totalWater.toFixed(1));
+    }
+
+    // ✅ تابع بهبودیافته شکل شماتیک - با شاخص ترکیبی بدن
+    function generateBodySchema(bmi, gender, goal, bodyFatPercent, isProMode, age, waist, neck, hip, wrist) {
+        let bodyScale = 1.0, bellyScale = 0;
+        let shoulderWidth = gender === 'male' ? 70 : 52;
+        let hipWidth = gender === 'male' ? 48 : 62;
+        let waistWidth = gender === 'male' ? 52 : 42;
+        let chestWidth = gender === 'male' ? 62 : 52;
+        let neckWidth = gender === 'male' ? 12 : 10;
+        let armWidth = gender === 'male' ? 14 : 11;
+        let bodyColor, bodyColorLight, bodyColorDark;
+        let muscleDefinition = 0;
+        
+        // ✅ شاخص ترکیبی بدن (Body Shape Index) - جایگزین BMI خالص
+        let bodyShapeIndex = bmi;
+        if (isProMode) {
+            if (waist > 0) {
+                const waistExpected = gender === 'male' ? 85 : 75;
+                const waistRatio = waist / waistExpected;
+                bodyShapeIndex *= Math.pow(waistRatio, 0.4);
+            }
+            if (bodyFatPercent > 0) {
+                const bfExpected = gender === 'male' ? 20 : 28;
+                const bfRatio = bodyFatPercent / bfExpected;
+                bodyShapeIndex *= Math.pow(bfRatio, 0.3);
+            }
+            if (neck > 0) {
+                const neckExpected = gender === 'male' ? 38 : 33;
+                const neckRatio = neck / neckExpected;
+                bodyShapeIndex *= Math.pow(neckRatio, 0.15);
+            }
+        }
+        
+        // تنظیم پایه بر اساس Body Shape Index
+        if (bodyShapeIndex < 18.5) {
+            bodyScale = 0.85; shoulderWidth *= 0.9; hipWidth *= 0.9; waistWidth *= 0.85; chestWidth *= 0.9;
+            bodyColor = '#06b6d4'; bodyColorLight = '#67e8f9'; bodyColorDark = '#0891b2'; muscleDefinition = 0.3;
+        } else if (bodyShapeIndex < 22) {
+            bodyScale = 0.95; bodyColor = '#10b981'; bodyColorLight = '#6ee7b7'; bodyColorDark = '#059669'; muscleDefinition = 0.5;
+        } else if (bodyShapeIndex < 25) {
+            bodyScale = 1.0; bodyColor = '#10b981'; bodyColorLight = '#6ee7b7'; bodyColorDark = '#059669'; muscleDefinition = 0.3;
+        } else if (bodyShapeIndex < 28) {
+            bodyScale = 1.05; bellyScale = 8; shoulderWidth *= 1.05; hipWidth *= 1.1; waistWidth *= 1.15; chestWidth *= 1.05;
+            bodyColor = '#f59e0b'; bodyColorLight = '#fcd34d'; bodyColorDark = '#d97706'; muscleDefinition = 0.1;
+        } else if (bodyShapeIndex < 32) {
+            bodyScale = 1.12; bellyScale = 15; shoulderWidth *= 1.1; hipWidth *= 1.2; waistWidth *= 1.3; chestWidth *= 1.1;
+            bodyColor = '#f97316'; bodyColorLight = '#fdba74'; bodyColorDark = '#ea580c'; muscleDefinition = 0;
+        } else {
+            bodyScale = 1.2; bellyScale = 22; shoulderWidth *= 1.15; hipWidth *= 1.3; waistWidth *= 1.4; chestWidth *= 1.15;
+            bodyColor = '#ef4444'; bodyColorLight = '#fca5a5'; bodyColorDark = '#dc2626'; muscleDefinition = 0;
+        }
+
+        if (isProMode) {
+            if (waist > 0) {
+                const waistExpected = gender === 'male' ? 85 : 75;
+                const waistRatio = waist / waistExpected;
+                if (waistRatio > 1.0) {
+                    bellyScale += (waistRatio - 1.0) * 20;
+                    waistWidth *= Math.min(waistRatio, 1.5);
+                }
+            }
+            if (neck > 0) {
+                const neckExpected = gender === 'male' ? 38 : 33;
+                const neckRatio = neck / neckExpected;
+                neckWidth *= Math.max(0.8, Math.min(neckRatio, 1.4));
+            }
+            if (gender === 'female' && hip > 0) {
+                const hipExpected = 95;
+                const hipRatio = hip / hipExpected;
+                hipWidth *= Math.max(0.85, Math.min(hipRatio, 1.4));
+            }
+            if (wrist > 0) {
+                const wristExpected = gender === 'male' ? 17 : 15;
+                const wristRatio = wrist / wristExpected;
+                armWidth *= Math.max(0.8, Math.min(wristRatio, 1.3));
+            }
+            if (bodyFatPercent > 0) {
+                if (gender === 'male') {
+                    if (bodyFatPercent < 12) { muscleDefinition = 0.8; bellyScale = Math.max(0, bellyScale - 5); }
+                    else if (bodyFatPercent < 18) { muscleDefinition = 0.5; bellyScale = Math.max(0, bellyScale - 2); }
+                    else if (bodyFatPercent > 28) { bellyScale += 5; muscleDefinition = 0; }
+                } else {
+                    if (bodyFatPercent < 20) { muscleDefinition = 0.5; bellyScale = Math.max(0, bellyScale - 4); }
+                    else if (bodyFatPercent < 26) { muscleDefinition = 0.2; bellyScale = Math.max(0, bellyScale - 2); }
+                    else if (bodyFatPercent > 35) { bellyScale += 5; muscleDefinition = 0; }
+                }
+            }
+        }
+
+        const cx = 120, headY = 45, headR = 22;
+        const neckY = 70, shoulderY = 85, chestY = 110, waistY = 150, hipY = 175, legTopY = 190, legBottomY = 270;
+        const sw = shoulderWidth * bodyScale / 2;
+        const cw = chestWidth * bodyScale / 2;
+        const ww = waistWidth * bodyScale / 2;
+        const hw = hipWidth * bodyScale / 2;
+        const nw = neckWidth * bodyScale;
+        const aw = armWidth * bodyScale;
+        const bellyExtra = bellyScale * bodyScale;
+
+        // ✅ طراحی کاملاً جدید حجاب و چهره زنانه - روسری کوچک‌تر و ظریف‌تر
+        const hijabSvg = gender === 'female' ? `
+            <!-- حجاب: لایه پس‌زمینه - فقط دور سر و گردن -->
+            <path d="M ${cx - headR - 6} ${headY + 12}
+                     C ${cx - headR - 10} ${headY - headR - 6}, ${cx + headR + 10} ${headY - headR - 6}, ${cx + headR + 6} ${headY + 12}
+                     L ${cx + headR + 8} ${headY + 40}
+                     Q ${cx + sw + 6} ${shoulderY + 12}, ${cx + sw + 8} ${shoulderY + 18}
+                     L ${cx - sw - 8} ${shoulderY + 18}
+                     Q ${cx - sw - 6} ${shoulderY + 12}, ${cx - headR - 8} ${headY + 40}
+                     Z"
+                  fill="url(#hijabGrad)" opacity="0.97"/>
+            <!-- تزئین کناری حجاب -->
+            <circle cx="${cx + headR + 6}" cy="${headY + 8}" r="2.5" fill="#fbbf24" opacity="0.95"/>
+            <circle cx="${cx + headR + 6}" cy="${headY + 8}" r="1" fill="#fef9c3" opacity="0.7"/>
+        ` : `
+            <path d="M ${cx - headR + 2} ${headY - 5} 
+                     Q ${cx - headR} ${headY - headR - 3} ${cx} ${headY - headR - 5}
+                     Q ${cx + headR} ${headY - headR - 3} ${cx + headR - 2} ${headY - 5}
+                     Q ${cx + headR - 5} ${headY - headR + 5} ${cx} ${headY - headR + 3}
+                     Q ${cx - headR + 5} ${headY - headR + 5} ${cx - headR + 2} ${headY - 5} Z" 
+                  fill="#78350f"/>
+        `;
+
+        const muscleLines = (muscleDefinition > 0.3 && gender === 'male') ? `
+            <path d="M ${cx - cw*0.3} ${chestY - 10} Q ${cx} ${chestY - 5} ${cx + cw*0.3} ${chestY - 10}" 
+                  stroke="${bodyColorDark}" stroke-width="1.5" fill="none" opacity="${muscleDefinition * 0.6}"/>
+            <line x1="${cx}" y1="${chestY + 5}" x2="${cx}" y2="${waistY - 5}" 
+                  stroke="${bodyColorDark}" stroke-width="1.5" opacity="${muscleDefinition * 0.5}"/>
+            <line x1="${cx - ww*0.3}" y1="${waistY - 20}" x2="${cx + ww*0.3}" y2="${waistY - 20}" 
+                  stroke="${bodyColorDark}" stroke-width="1" opacity="${muscleDefinition * 0.4}"/>
+            <line x1="${cx - ww*0.25}" y1="${waistY - 10}" x2="${cx + ww*0.25}" y2="${waistY - 10}" 
+                  stroke="${bodyColorDark}" stroke-width="1" opacity="${muscleDefinition * 0.4}"/>
+        ` : '';
+
+        const bellySvg = bellyExtra > 0 ? `<ellipse cx="${cx}" cy="${waistY + 5}" rx="${ww + bellyExtra * 0.8}" ry="${bellyExtra * 1.2 + 15}" fill="url(#bodyGrad)" opacity="0.85"/>` : '';
+
+        const goalIcon = goal === 'gain' ? '💪' : goal === 'lose' ? '🔥' : '⚖️';
+        const goalColor = goal === 'gain' ? '#3b82f6' : goal === 'lose' ? '#f59e0b' : '#10b981';
+
+        // ✅ لایه نیم‌دایره بالای پیشانی برای زنان (هدبند روسری)
+        const foreheadBand = gender === 'female' ? `
+            <path d="M ${cx - headR * 0.72} ${headY - headR * 0.45}
+                     Q ${cx} ${headY - headR * 1.05} ${cx + headR * 0.72} ${headY - headR * 0.45}
+                     Q ${cx} ${headY - headR * 0.78} ${cx - headR * 0.72} ${headY - headR * 0.45} Z"
+                  fill="url(#hijabGrad)" opacity="0.97"/>
+            <path d="M ${cx - headR * 0.68} ${headY - headR * 0.52}
+                     Q ${cx} ${headY - headR * 1.0} ${cx + headR * 0.68} ${headY - headR * 0.52}"
+                  stroke="#e9d5ff" stroke-width="1" fill="none" opacity="0.7"/>
+        ` : '';
+
+        const svg = `
+            <svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:${bodyColorLight};stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:${bodyColor};stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:${bodyColorDark};stop-opacity:1" />
+                    </linearGradient>
+                    <!-- ✅ رنگ پوست طبیعی هلویی - متمایز از حجاب -->
+                    <radialGradient id="skinGrad" cx="50%" cy="40%" r="60%">
+                        <stop offset="0%" style="stop-color:#FDBCB4;stop-opacity:1" />
+                        <stop offset="70%" style="stop-color:#F5D0A9;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#E8B4A0;stop-opacity:1" />
+                    </radialGradient>
+                    <linearGradient id="hijabGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.2"/>
+                    </filter>
+                    <!-- ✅ clipPath برای جداسازی صورت از حجاب -->
+                    <clipPath id="faceClip">
+                        <ellipse cx="${cx}" cy="${headY + 3}" rx="${headR * 0.82}" ry="${headR * 0.92}"/>
+                    </clipPath>
+                </defs>
+                
+                <ellipse cx="${cx}" cy="285" rx="${30 * bodyScale}" ry="6" fill="rgba(0,0,0,0.1)"/>
+                
+                <g filter="url(#shadow)">
+                    <path d="M ${cx - ww*0.4} ${legTopY} Q ${cx - hw*0.5} ${legTopY + 20} ${cx - hw*0.45} ${legBottomY - 10} L ${cx - hw*0.35} ${legBottomY} L ${cx - hw*0.55} ${legBottomY + 5} L ${cx - hw*0.25} ${legBottomY + 5} L ${cx - hw*0.2} ${legBottomY - 10} Q ${cx - ww*0.2} ${legTopY + 20} ${cx - ww*0.2} ${legTopY} Z" fill="url(#bodyGrad)" opacity="0.95"/>
+                    <path d="M ${cx + ww*0.4} ${legTopY} Q ${cx + hw*0.5} ${legTopY + 20} ${cx + hw*0.45} ${legBottomY - 10} L ${cx + hw*0.35} ${legBottomY} L ${cx + hw*0.55} ${legBottomY + 5} L ${cx + hw*0.25} ${legBottomY + 5} L ${cx + hw*0.2} ${legBottomY - 10} Q ${cx + ww*0.2} ${legTopY + 20} ${cx + ww*0.2} ${legTopY} Z" fill="url(#bodyGrad)" opacity="0.95"/>
+                </g>
+                
+                <g filter="url(#shadow)">
+                    <path d="M ${cx - sw} ${shoulderY} Q ${cx - sw - 5} ${shoulderY + 15} ${cx - cw} ${chestY} Q ${cx - ww - bellyExtra} ${waistY} ${cx - hw} ${hipY} L ${cx - ww*0.5} ${legTopY} L ${cx + ww*0.5} ${legTopY} L ${cx + hw} ${hipY} Q ${cx + ww + bellyExtra} ${waistY} ${cx + cw} ${chestY} Q ${cx + sw + 5} ${shoulderY + 15} ${cx + sw} ${shoulderY} Z" fill="url(#bodyGrad)"/>
+                    ${muscleLines}
+                    ${bellySvg}
+                </g>
+                
+                <g filter="url(#shadow)">
+                    <path d="M ${cx - sw} ${shoulderY} Q ${cx - sw - aw*0.8} ${shoulderY + 10} ${cx - sw - aw} ${shoulderY + 35} Q ${cx - sw - aw*0.8} ${shoulderY + 55} ${cx - sw - aw*0.5} ${shoulderY + 70} L ${cx - sw - aw*0.2} ${shoulderY + 70} Q ${cx - sw - aw*0.4} ${shoulderY + 55} ${cx - sw - aw*0.5} ${shoulderY + 35} Q ${cx - sw - aw*0.3} ${shoulderY + 15} ${cx - sw + aw*0.3} ${shoulderY + 5} Z" fill="url(#bodyGrad)" opacity="0.9"/>
+                    <path d="M ${cx + sw} ${shoulderY} Q ${cx + sw + aw*0.8} ${shoulderY + 10} ${cx + sw + aw} ${shoulderY + 35} Q ${cx + sw + aw*0.8} ${shoulderY + 55} ${cx + sw + aw*0.5} ${shoulderY + 70} L ${cx + sw + aw*0.2} ${shoulderY + 70} Q ${cx + sw + aw*0.4} ${shoulderY + 55} ${cx + sw + aw*0.5} ${shoulderY + 35} Q ${cx + sw + aw*0.3} ${shoulderY + 15} ${cx + sw - aw*0.3} ${shoulderY + 5} Z" fill="url(#bodyGrad)" opacity="0.9"/>
+                </g>
+                
+                <rect x="${cx - nw/2}" y="${neckY}" width="${nw}" height="18" rx="5" fill="url(#skinGrad)"/>
+                
+                <!-- ✅ چهره کاملاً بازطراحی شده - حجاب و صورت جدا هستند -->
+                <g filter="url(#shadow)">
+                    <!-- حجاب: لایه پس‌زمینه -->
+                    ${hijabSvg}
+                    
+                    <!-- صورت با clipPath - فقط ناحیه بیضی صورت قابل دیدن است -->
+                    <g clip-path="url(#faceClip)">
+                        <ellipse cx="${cx}" cy="${headY + 2}" rx="${headR}" ry="${headR}" fill="url(#skinGrad)"/>
+                        <!-- سایه گونه‌ها -->
+                        <circle cx="${cx - 11}" cy="${headY + 9}" r="3.5" fill="#fca5a5" opacity="0.45"/>
+                        <circle cx="${cx + 11}" cy="${headY + 9}" r="3.5" fill="#fca5a5" opacity="0.45"/>
+                    </g>
+                    
+                    <!-- اجزای صورت - روی پوست -->
+                    <!-- چشم‌ها -->
+                    <ellipse cx="${cx - 7}" cy="${headY + 2}" rx="3.2" ry="3.6" fill="white"/>
+                    <ellipse cx="${cx + 7}" cy="${headY + 2}" rx="3.2" ry="3.6" fill="white"/>
+                    <circle cx="${cx - 7}" cy="${headY + 2.5}" r="1.9" fill="#1c1917"/>
+                    <circle cx="${cx + 7}" cy="${headY + 2.5}" r="1.9" fill="#1c1917"/>
+                    <!-- برق چشم -->
+                    <circle cx="${cx - 6.3}" cy="${headY + 1.8}" r="0.7" fill="white"/>
+                    <circle cx="${cx + 7.7}" cy="${headY + 1.8}" r="0.7" fill="white"/>
+                    
+                    <!-- ابروها -->
+                    <path d="M ${cx - 10.5} ${headY - 3.5} Q ${cx - 7} ${headY - 6} ${cx - 3.5} ${headY - 3.5}" stroke="#57534e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    <path d="M ${cx + 3.5} ${headY - 3.5} Q ${cx + 7} ${headY - 6} ${cx + 10.5} ${headY - 3.5}" stroke="#57534e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- بینی -->
+                    <path d="M ${cx} ${headY + 3.5} L ${cx - 2.2} ${headY + 9} L ${cx + 2.2} ${headY + 9}" stroke="#d4a373" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- لب‌ها -->
+                    <path d="M ${cx - 5.5} ${headY + 13} Q ${cx - 2.5} ${headY + 15.5} ${cx} ${headY + 15} Q ${cx + 2.5} ${headY + 15.5} ${cx + 5.5} ${headY + 13}" stroke="#dc2626" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- ✅ لایه نیم‌دایره بالای پیشانی (هدبند روسری) -->
+                    ${foreheadBand}
+                </g>
+                
+                <text x="${cx + sw + 15}" y="${shoulderY + 20}" font-size="18" fill="${goalColor}" font-weight="bold">${goalIcon}</text>
+            </svg>
+        `;
+
+        let bodyType = '';
+        if (bmi < 18.5) bodyType = 'کمبود وزن';
+        else if (bmi < 25) bodyType = 'وزن نرمال';
+        else if (bmi < 30) bodyType = 'اضافه وزن';
+        else bodyType = 'چاقی';
+
+        return { svg, bodyType };
+    }
+
+    let globalReportText = "";
+    let isProMode = false;
+    let activeTooltip = null;
+    let tooltipTimeout = null;
+
+    function initTooltips() {
+        document.addEventListener('click', function(e) {
+            const icon = e.target.closest('.tooltip-icon');
+            if (icon) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (activeTooltip && activeTooltip._icon === icon) hideTooltip();
+                else showTooltip(icon);
+            } else if (!e.target.closest('.tooltip-popup')) {
+                hideTooltip();
+            }
+        }, true);
+        document.addEventListener('touchstart', function(e) {
+            const icon = e.target.closest('.tooltip-icon');
+            if (icon) {
+                e.preventDefault();
+                if (activeTooltip && activeTooltip._icon === icon) hideTooltip();
+                else showTooltip(icon);
+            }
+        }, {passive: false});
+        window.addEventListener('scroll', hideTooltip, true);
+    }
+
+    function showTooltip(icon) {
+        hideTooltip();
+        const tip = icon.getAttribute('data-tip');
+        if (!tip) return;
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip-popup';
+        tooltip.innerText = tip;
+        tooltip._icon = icon;
+        document.body.appendChild(tooltip);
+        const rect = icon.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
+        let top = rect.top - tooltipRect.height - 12;
+        const margin = 10;
+        if (left < margin) left = margin;
+        if (left + tooltipRect.width > window.innerWidth - margin) left = window.innerWidth - tooltipRect.width - margin;
+        if (top < margin) { top = rect.bottom + 12; tooltip.classList.add('top'); }
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+        activeTooltip = tooltip;
+        tooltipTimeout = setTimeout(hideTooltip, 10000);
+    }
+
+    function hideTooltip() {
+        if (tooltipTimeout) { clearTimeout(tooltipTimeout); tooltipTimeout = null; }
+        if (activeTooltip) {
+            const tooltip = activeTooltip;
+            activeTooltip = null;
+            tooltip.classList.add('fade-out');
+            setTimeout(() => { if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip); }, 400);
+        }
+    }
+
+    function toggleProMode() {
+        isProMode = document.getElementById('proModeToggle').checked;
+        document.getElementById('proFields').style.display = isProMode ? 'block' : 'none';
+        toggleGenderFields();
+        const advancedTabs = ['tabBtn-bodycomp', 'tabBtn-cardio', 'tabBtn-ref'];
+        advancedTabs.forEach(id => {
+            const btn = document.getElementById(id);
+            if (isProMode) btn.classList.remove('hidden');
+            else {
+                btn.classList.add('hidden');
+                if (btn.classList.contains('active')) switchTab('tab-summary', document.getElementById('tabBtn-summary'));
+            }
+        });
+    }
+
+    function toggleGenderFields() {
+        const gender = document.getElementById('gender').value;
+        document.getElementById('hipGroup').style.display = (gender === 'female' && isProMode) ? 'block' : 'none';
+    }
+
+    function switchTab(tabId, btnElement) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        if (btnElement) btnElement.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    function runComprehensiveAnalysis() {
+        const gender = document.getElementById('gender').value;
+        const age = parseFloat(document.getElementById('age').value);
+        const height = parseFloat(document.getElementById('height').value);
+        const weight = parseFloat(document.getElementById('weight').value);
+
+        if (!age || !height || !weight || age <= 0 || height <= 0 || weight <= 0) {
+            alert("لطفاً فیلدهای پایه (سن، قد، وزن) را به درستی پر کنید.");
+            return;
+        }
+
+        const heightM = height / 100;
+        const bmi = parseFloat((weight / (heightM * heightM)).toFixed(1));
+        const isTeen = age < 20;
+        
+        document.getElementById('resultBox').style.display = 'block';
+        
+        let status = "", cardBg = "", percentile = 0, category = "";
+        let idealWeightMin, idealWeightMax;
+        let bodyFatPercent = null;
+        
+        if (isTeen) {
+            const lms = getLMS(gender, age);
+            if (!lms) { alert("سن وارد شده معتبر نیست."); return; }
+            const zScore = bmiToZScore(bmi, lms.L, lms.M, lms.S);
+            percentile = zToPercentile(zScore);
+            
+            if (percentile < 5) { category = "کمبود وزن"; status = "Underweight (<P5)"; cardBg = "linear-gradient(135deg, #06b6d4, #0891b2)"; }
+            else if (percentile < 85) { category = "وزن سالم"; status = "Healthy Weight (P5-P85)"; cardBg = "linear-gradient(135deg, #10b981, #059669)"; }
+            else if (percentile < 95) { category = "اضافه وزن"; status = "Overweight (P85-P95)"; cardBg = "linear-gradient(135deg, #f59e0b, #d97706)"; }
+            else { category = "چاقی"; status = "Obesity (≥P95)"; cardBg = "linear-gradient(135deg, #ef4444, #dc2626)"; }
+            
+            document.getElementById('scoreCard').style.background = cardBg;
+            document.getElementById('mainScore').innerText = bmi;
+            document.getElementById('mainStatus').innerText = status;
+            document.getElementById('scoreSubtext').innerText = `BMI | صدک ${percentile.toFixed(0)}`;
+            document.getElementById('percentileChartContainer').style.display = 'block';
+            document.getElementById('adultChartContainer').style.display = 'none';
+            drawPercentileChart(gender, age, bmi, percentile);
+            const bmiP5 = zScoreToBMI(percentileToZ(5), lms.L, lms.M, lms.S);
+            const bmiP85 = zScoreToBMI(percentileToZ(85), lms.L, lms.M, lms.S);
+            idealWeightMin = (bmiP5 * heightM * heightM).toFixed(1);
+            idealWeightMax = (bmiP85 * heightM * heightM).toFixed(1);
+        } else {
+            let markerPos = 50;
+            if (bmi < 18.5) { status = "کمبود وزن"; cardBg = "linear-gradient(135deg, #06b6d4, #0891b2)"; markerPos = Math.max(0, (bmi - 10) / 8.5 * 25); }
+            else if (bmi < 25) { status = "وزن نرمال"; cardBg = "linear-gradient(135deg, #10b981, #059669)"; markerPos = 25 + ((bmi - 18.5) / 6.5 * 50); }
+            else if (bmi < 30) { status = "اضافه وزن"; cardBg = "linear-gradient(135deg, #f59e0b, #d97706)"; markerPos = 75 + ((bmi - 25) / 5 * 15); }
+            else { status = "چاقی بالینی"; cardBg = "linear-gradient(135deg, #ef4444, #dc2626)"; markerPos = Math.min(100, 90 + ((bmi - 30) / 10 * 10)); }
+            markerPos = 100 - markerPos;
+            document.getElementById('scoreCard').style.background = cardBg;
+            document.getElementById('mainScore').innerText = bmi;
+            document.getElementById('mainStatus').innerText = status;
+            document.getElementById('scoreSubtext').innerText = "شاخص توده بدنی (BMI)";
+            document.getElementById('percentileChartContainer').style.display = 'none';
+            document.getElementById('adultChartContainer').style.display = 'block';
+            setTimeout(() => { document.getElementById('bmiMarker').style.left = `${markerPos}%`; }, 150);
+            idealWeightMin = (18.5 * heightM * heightM).toFixed(1);
+            idealWeightMax = (24.9 * heightM * heightM).toFixed(1);
+        }
+
+        let waist = 0, neck = 0, hip = 0, wrist = 0;
+        let bodyFat = "نیازمند داده‌های پیشرفته", lbm = "نامشخص", ffmi = "نامشخص", whtr = "نامشخص";
+        let bpStatus = "ثبت نشده", fbsStatus = "ثبت نشده", visceralFatStatus = "ثبت نشده";
+
+        if (isProMode) {
+            waist = parseFloat(document.getElementById('waist').value) || 0;
+            neck = parseFloat(document.getElementById('neck').value) || 0;
+            hip = parseFloat(document.getElementById('hip').value) || 0;
+            wrist = parseFloat(document.getElementById('wrist').value) || 0;
+            const bpSys = parseFloat(document.getElementById('bpSys').value) || 0;
+            const bpDia = parseFloat(document.getElementById('bpDia').value) || 0;
+            const fbs = parseFloat(document.getElementById('fbs').value) || 0;
+
+            if (waist > 0 && neck > 0) {
+                if (gender === 'male') {
+                    const diff = Math.max(1, waist - neck);
+                    bodyFat = (495 / (1.0324 - 0.19077 * Math.log10(diff) + 0.15456 * Math.log10(height)) - 450).toFixed(1);
+                } else if (hip > 0) {
+                    const diff = Math.max(1, waist + hip - neck);
+                    bodyFat = (495 / (1.29579 - 0.35004 * Math.log10(diff) + 0.22100 * Math.log10(height)) - 450).toFixed(1);
+                }
+                bodyFat = (bodyFat > 0 && bodyFat < 60) ? bodyFat + "%" : "خطای اندازه‌گیری";
+                if (bodyFat !== "خطای اندازه‌گیری") bodyFatPercent = parseFloat(bodyFat);
+            }
+
+            if (bodyFat !== "نیازمند داده‌های پیشرفته" && bodyFat !== "خطای اندازه‌گیری") {
+                const bfDecimal = parseFloat(bodyFat) / 100;
+                const fatMass = weight * bfDecimal;
+                lbm = (weight - fatMass).toFixed(1) + " kg";
+                const ffmiRaw = (weight - fatMass) / (heightM * heightM);
+                ffmi = (ffmiRaw + (6.1 * (1.8 - heightM))).toFixed(1);
+            }
+
+            if (waist > 0) {
+                whtr = (waist / height).toFixed(2);
+                if (gender === 'male') visceralFatStatus = waist < 94 ? "پایین ✅" : (waist < 102 ? "متوسط ⚠️" : "بالا 🔴");
+                else visceralFatStatus = waist < 80 ? "پایین ✅" : (waist < 88 ? "متوسط ⚠️" : "بالا 🔴");
+            }
+
+            if (bpSys > 0 && bpDia > 0) {
+                if (bpSys < 120 && bpDia < 80) bpStatus = "نرمال ✅";
+                else if (bpSys < 130 && bpDia < 80) bpStatus = "بالا ⚠️";
+                else if (bpSys < 140 || bpDia < 90) bpStatus = "مرحله ۱ 🟠";
+                else bpStatus = "مرحله ۲ 🔴";
+            }
+
+            if (fbs > 0) {
+                if (fbs < 100) fbsStatus = "نرمال ✅";
+                else if (fbs < 126) fbsStatus = "پیش‌دیابت ⚠️";
+                else fbsStatus = "دیابت 🔴";
+            }
+        }
+
+        const activity = isProMode ? parseFloat(document.getElementById('activity').value) : 1.2;
+        const goalResult = determineSmartGoal(bmi, percentile, age, gender, isTeen, bodyFatPercent, isProMode, activity);
+        const goal = goalResult.goal;
+        const goalReason = goalResult.reason;
+
+        let bmr = (gender === 'male') ? (10 * weight) + (6.25 * height) - (5 * age) + 5 : (10 * weight) + (6.25 * height) - (5 * age) - 161;
+        let tdee = Math.round(bmr * activity);
+        let targetCalories = tdee;
+        if (goal === 'lose') targetCalories = tdee - (isTeen ? 250 : 500);
+        else if (goal === 'gain') targetCalories = tdee + (isTeen ? 400 : 500);
+
+        const nutrition = calculateNutrition(targetCalories, weight, age, gender, goal, isTeen, activity, bodyFatPercent, isProMode);
+        const waterNeeds = calculateWaterNeeds(weight, activity, nutrition.cGrams);
+
+        const ageWarningBox = document.getElementById('ageWarningBox');
+        const ageWarningText = document.getElementById('ageWarningText');
+        if (isTeen) {
+            ageWarningBox.style.display = 'flex';
+            ageWarningText.innerHTML = `<strong>تحلیل تخصصی نوجوانان (${age} ساله):</strong> BMI شما بر اساس <b>نمودارهای رشد WHO 2007</b> برای ${gender === 'male' ? 'پسران' : 'دختران'} هم‌سن مقایسه شده است. صدک ${percentile.toFixed(0)} یعنی شما از ${percentile.toFixed(0)}٪ همسالان خود BMI بالاتری دارید. بدن شما در اوج رشد استخوانی و هورمونی است؛ از رژیم‌های سختگیرانه خودداری کنید.`;
+        } else {
+            ageWarningBox.style.display = 'none';
+        }
+
+        const goalCard = document.getElementById('goalCard');
+        let goalIcon, goalTitle, goalSubtitle;
+        if (goal === 'gain') { goalIcon = '🏋️'; goalTitle = 'عضله‌سازی و افزایش وزن'; goalSubtitle = 'مازاد کالری + پروتئین بالا + تمرین مقاومتی'; }
+        else if (goal === 'lose') { goalIcon = '🔥'; goalTitle = 'کاهش چربی و وزن'; goalSubtitle = 'کسری کالری ملایم + پروتئین بالا + فعالیت هوازی'; }
+        else { goalIcon = '⚖️'; goalTitle = 'حفظ وزن و سلامت'; goalSubtitle = 'تغذیه متعادل + فعالیت منظم + عادات سالم'; }
+
+        goalCard.className = `goal-card ${goal}`;
+        goalCard.innerHTML = `
+            <div class="goal-header">
+                <div class="goal-icon">${goalIcon}</div>
+                <div>
+                    <div class="goal-title">${goalTitle}</div>
+                    <div class="goal-subtitle">${goalSubtitle}</div>
+                </div>
+            </div>
+            <div class="goal-stats">
+                <div class="goal-stat">
+                    <div class="goal-stat-value">${nutrition.targetCalories}</div>
+                    <div class="goal-stat-label">کالری روزانه</div>
+                </div>
+                <div class="goal-stat">
+                    <div class="goal-stat-value">${nutrition.pGrams}g</div>
+                    <div class="goal-stat-label">پروتئین (${nutrition.proteinPerKg}g/kg)</div>
+                </div>
+                <div class="goal-stat">
+                    <div class="goal-stat-value">${goal === 'lose' ? '−500' : (goal === 'gain' ? (isTeen ? '+400' : '+500') : '0')}</div>
+                    <div class="goal-stat-label">کالری ${goal === 'lose' ? 'کسری' : (goal === 'gain' ? 'مازاد' : 'تعادل')}</div>
+                </div>
+            </div>
+            <div class="goal-reason">
+                <strong>💡 دلیل انتخاب این هدف:</strong> ${goalReason}
+            </div>
+        `;
+        goalCard.style.display = 'block';
+
+        const bodySchema = generateBodySchema(bmi, gender, goal, bodyFatPercent, isProMode, age, waist, neck, hip, wrist);
+        const bodySchemaCard = document.getElementById('bodySchemaCard');
+        bodySchemaCard.innerHTML = `
+            <div class="body-schema-title">👤 نمای شماتیک وضعیت بدنی شما</div>
+            <div class="body-schema-container">${bodySchema.svg}</div>
+            <div class="body-schema-stats">
+                <div class="body-stat">
+                    <div class="body-stat-value">${bodySchema.bodyType}</div>
+                    <div class="body-stat-label">نوع بدن</div>
+                </div>
+                <div class="body-stat">
+                    <div class="body-stat-value">${bmi}</div>
+                    <div class="body-stat-label">BMI</div>
+                </div>
+                ${isProMode && bodyFatPercent ? `
+                <div class="body-stat">
+                    <div class="body-stat-value">${bodyFatPercent}%</div>
+                    <div class="body-stat-label">درصد چربی</div>
+                </div>
+                <div class="body-stat">
+                    <div class="body-stat-value">${lbm}</div>
+                    <div class="body-stat-label">توده عضلانی</div>
+                </div>
+                ` : `
+                <div class="body-stat">
+                    <div class="body-stat-value">${weight} kg</div>
+                    <div class="body-stat-label">وزن فعلی</div>
+                </div>
+                <div class="body-stat">
+                    <div class="body-stat-value">${idealWeightMin}-${idealWeightMax}</div>
+                    <div class="body-stat-label">وزن ایده‌آل (kg)</div>
+                </div>
+                `}
+            </div>
+        `;
+        bodySchemaCard.style.display = 'block';
+
+        if (isProMode) {
+            document.getElementById('compGrid').innerHTML = `
+                <div class="data-card"><div class="data-card-title">درصد چربی <span class="tooltip-icon" data-tip="درصدی از وزن کل بدن که از بافت چربی تشکیل شده است. مردان: 10-20% سالم، زنان: 18-28% سالم.">؟</span></div><div class="data-card-val">${bodyFat}</div><div class="data-card-sub">U.S. Navy</div></div>
+                <div class="data-card"><div class="data-card-title">توده بدون چربی (LBM) <span class="tooltip-icon" data-tip="وزن کل بدن منهای وزن چربی. شامل عضلات، استخوان‌ها، آب و اندام‌های داخلی است.">؟</span></div><div class="data-card-val">${lbm}</div><div class="data-card-sub">سرمایه متابولیک</div></div>
+                <div class="data-card"><div class="data-card-title">شاخص عضلانی (FFMI) <span class="tooltip-icon" data-tip="Fat-Free Mass Index اصلاح‌شده: معیاری برای سنجش حجم عضلانی واقعی. میانگین مردان: 19-22.">؟</span></div><div class="data-card-val">${ffmi}</div><div class="data-card-sub">میانگین: ۱۹-۲۲</div></div>
+                <div class="data-card"><div class="data-card-title">چربی احشایی <span class="tooltip-icon" data-tip="چربی خطرناک دور اندام‌های داخلی (کبد، قلب، روده). ریسک دیابت نوع 2 و بیماری قلبی را افزایش می‌دهد.">؟</span></div><div class="data-card-val">${visceralFatStatus}</div><div class="data-card-sub">بر اساس دور کمر</div></div>
+            `;
+
+            document.getElementById('cardioGrid').innerHTML = `
+                <div class="data-card"><div class="data-card-title">فشار خون <span class="tooltip-icon" data-tip="نیروی خون به دیواره رگ‌ها. نرمال: زیر 120/80.">؟</span></div><div class="data-card-val">${bpStatus}</div><div class="data-card-sub">AHA 2017</div></div>
+                <div class="data-card"><div class="data-card-title">قند خون ناشتا <span class="tooltip-icon" data-tip="میزان گلوکز خون پس از 8 ساعت ناشتایی. نرمال: زیر 100.">؟</span></div><div class="data-card-val">${fbsStatus}</div><div class="data-card-sub">ADA</div></div>
+                <div class="data-card"><div class="data-card-title">حداکثر ضربان قلب <span class="tooltip-icon" data-tip="HRmax: بیشترین ضربان قلب در فعالیت شدید. فرمول Tanaka: 208 - (0.7 × سن).">؟</span></div><div class="data-card-val">${Math.round(208 - 0.7 * age)} bpm</div><div class="data-card-sub">Tanaka</div></div>
+                <div class="data-card"><div class="data-card-title">ضربان هدف چربی‌سوزی <span class="tooltip-icon" data-tip="منطقه 60-70% HRmax: بهترین محدوده برای چربی‌سوزی.">؟</span></div><div class="data-card-val">${Math.round((208 - 0.7 * age) * 0.6)}-${Math.round((208 - 0.7 * age) * 0.7)}</div><div class="data-card-sub">۶۰-۷۰٪</div></div>
+            `;
+
+            let compHTML = `<h4>تحلیل ترکیب بدنی:</h4><ul>`;
+            if (bodyFat !== "خطای اندازه‌گیری" && bodyFat !== "نیازمند داده‌های پیشرفته") {
+                const bfNum = parseFloat(bodyFat);
+                if (bfNum > (gender === 'male' ? 25 : 32)) compHTML += `<li><strong>هشدار:</strong> درصد چربی بالاتر از بهینه.</li>`;
+                else if (bfNum < (gender === 'male' ? 8 : 18)) compHTML += `<li><strong>هشدار:</strong> چربی بسیار پایین.</li>`;
+                else compHTML += `<li><strong>وضعیت مطلوب:</strong> درصد چربی در محدوده سالم.</li>`;
+            }
+            if (ffmi !== "نامشخص" && parseFloat(ffmi) > 22) compHTML += `<li><strong>پتانسیل عضلانی عالی:</strong> FFMI بالای ۲۲.</li>`;
+            compHTML += `</ul>`;
+            document.getElementById('compAnalysis').innerHTML = compHTML;
+
+            let cardioHTML = `<h4>تحلیل قلبی-عروقی:</h4><ul>`;
+            if (bpStatus.includes("مرحله")) cardioHTML += `<li><strong>فشار خون:</strong> نیازمند بازبینی سبک زندگی.</li>`;
+            if (fbsStatus.includes("پیش‌دیابت") || fbsStatus.includes("دیابت")) cardioHTML += `<li><strong>قند خون:</strong> هشداری برای مقاومت به انسولین.</li>`;
+            if (whtr !== "نامشخص" && whtr >= 0.5) cardioHTML += `<li><strong>چربی شکمی:</strong> WHtR بالای ۰.۵ ریسک متابولیک را افزایش می‌دهد.</li>`;
+            cardioHTML += `<li><strong>توصیه:</strong> حداقل ۱۵۰ دقیقه فعالیت هوازی متوسط در هفته.</li></ul>`;
+            document.getElementById('cardioAnalysis').innerHTML = cardioHTML;
+        } else {
+            document.getElementById('compGrid').innerHTML = '';
+            document.getElementById('cardioGrid').innerHTML = '';
+            document.getElementById('compAnalysis').innerHTML = '<p>برای تحلیل ترکیب بدنی، «حالت تخصصی» را فعال کنید.</p>';
+            document.getElementById('cardioAnalysis').innerHTML = '<p>برای ارزیابی قلبی، «حالت تخصصی» را فعال نمایید.</p>';
+        }
+
+        let sleepRec = "۷ تا ۹ ساعت";
+        if (age < 14) sleepRec = "۹ تا ۱۱ ساعت";
+        else if (age < 18) sleepRec = "۸ تا ۱۰ ساعت";
+        else if (age > 65) sleepRec = "۷ تا ۸ ساعت";
+
+        document.getElementById('summaryGrid').innerHTML = `
+            <div class="data-card"><div class="data-card-title">بازه وزن سالم <span class="tooltip-icon" data-tip="محدوده وزنی که کمترین ریسک بیماری‌ها را دارد.">؟</span></div><div class="data-card-val">${idealWeightMin}-${idealWeightMax} kg</div><div class="data-card-sub">${isTeen ? 'WHO Percentiles' : 'WHO'}</div></div>
+            <div class="data-card"><div class="data-card-title">متابولیسم پایه (BMR) <span class="tooltip-icon" data-tip="کالری مورد نیاز بدن در استراحت مطلق.">؟</span></div><div class="data-card-val">${Math.round(bmr)} kcal</div><div class="data-card-sub">Mifflin-St Jeor</div></div>
+            <div class="data-card"><div class="data-card-title">نیاز خواب <span class="tooltip-icon" data-tip="مدت زمان خواب مورد نیاز بر اساس سن.">؟</span></div><div class="data-card-val">${sleepRec}</div><div class="data-card-sub">NSF</div></div>
+            <div class="data-card"><div class="data-card-title">آب روزانه <span class="tooltip-icon" data-tip="مقدار آب مورد نیاز بر اساس وزن، فعالیت و کربوهیدرات مصرفی.">؟</span></div><div class="data-card-val">${waterNeeds} لیتر</div><div class="data-card-sub">بر اساس فعالیت</div></div>
+        `;
+
+        let summaryHTML = `<h4>تحلیل وضعیت:</h4><ul>`;
+        if (isTeen) {
+            summaryHTML += `<li><strong>مقایسه با همسالان:</strong> BMI شما (${bmi}) در صدک ${percentile.toFixed(0)} قرار دارد.</li>`;
+            if (percentile < 5) summaryHTML += `<li><strong>توصیه:</strong> در محدوده کمبود وزن. با پزشک غدد مشورت کنید.</li>`;
+            else if (percentile < 85) summaryHTML += `<li><strong>توصیه:</strong> وزن سالم. بر عادات خوب تمرکز کنید.</li>`;
+            else if (percentile < 95) summaryHTML += `<li><strong>توصیه:</strong> اضافه وزن. افزایش فعالیت و کاهش تنقلات.</li>`;
+            else summaryHTML += `<li><strong>توصیه:</strong> چاقی. مشورت با پزشک و متخصص تغذیه.</li>`;
+            summaryHTML += `<li><strong>رشد:</strong> کلسیم و ویتامین D را جدی بگیرید.</li>`;
+        } else {
+            summaryHTML += `<li><strong>وضعیت:</strong> BMI شما «${status}» است. ${bmi >= 25 ? 'کاهش ۵-۱۰٪ وزن ریسک بیماری را کاهش می‌دهد.' : 'وزن خود را حفظ کنید.'}</li>`;
+        }
+        summaryHTML += `</ul>`;
+        document.getElementById('summaryAnalysis').innerHTML = summaryHTML;
+
+        document.getElementById('metaGrid').innerHTML = `
+            <div class="data-card"><div class="data-card-title">کالری هدف (TDEE) <span class="tooltip-icon" data-tip="کل کالری که بدن در روز می‌سوزاند (BMR × ضریب فعالیت).">؟</span></div><div class="data-card-val">${nutrition.targetCalories} kcal</div><div class="data-card-sub">${goal === 'lose' ? 'کسری ایمن' : (goal === 'gain' ? 'مازاد عضله‌سازی' : 'تعادل')}</div></div>
+            <div class="data-card"><div class="data-card-title">پروتئین روزانه <span class="tooltip-icon" data-tip="✅ محاسبه دقیق بر اساس LBM و سطح فعالیت: ${nutrition.proteinMultiplier}g/kg LBM (${goal === 'gain' ? 'عضله‌سازی' : (goal === 'lose' ? 'کاهش چربی' : 'حفظ وزن')}).">؟</span></div><div class="data-card-val">${nutrition.pGrams} g</div><div class="data-card-sub">${nutrition.proteinPerKg}g/kg وزن</div></div>
+        `;
+
+        const totalMacro = nutrition.pGrams + nutrition.cGrams + nutrition.fGrams;
+        document.getElementById('macroPBar').style.width = `${(nutrition.pGrams / totalMacro) * 100}%`;
+        document.getElementById('macroCBar').style.width = `${(nutrition.cGrams / totalMacro) * 100}%`;
+        document.getElementById('macroFBar').style.width = `${(nutrition.fGrams / totalMacro) * 100}%`;
+        document.getElementById('pGrams').innerText = nutrition.pGrams;
+        document.getElementById('cGrams').innerText = nutrition.cGrams;
+        document.getElementById('fGrams').innerText = nutrition.fGrams;
+
+        let metaHTML = `<h4>توصیه‌های تغذیه‌ای:</h4><ul>`;
+        if (isTeen) {
+            metaHTML += `<li><strong>پروتئین:</strong> ${nutrition.pGrams}g (${nutrition.proteinMultiplier}g/kg LBM) برای رشد و ${goal === 'gain' ? 'عضله‌سازی' : 'سلامتی'} کافی است.</li>`;
+            metaHTML += `<li><strong>چربی سالم:</strong> برای هورمون‌ها حیاتی است.</li>`;
+            metaHTML += `<li><strong>کلسیم:</strong> روزانه ۱۳۰۰ میلی‌گرم برای تراکم استخوان.</li>`;
+        } else {
+            if (goal === 'gain') metaHTML += `<li><strong>عضله‌سازی:</strong> پروتئین ${nutrition.pGrams}g (${nutrition.proteinMultiplier}g/kg LBM) برای ساخت عضله بهینه است.</li>`;
+            else if (goal === 'lose') metaHTML += `<li><strong>کاهش چربی:</strong> پروتئین بالا (${nutrition.pGrams}g) از تحلیل عضله جلوگیری می‌کند.</li>`;
+            else metaHTML += `<li><strong>تعادل:</strong> پروتئین ${nutrition.pGrams}g متناسب با LBM و سطح فعالیت شما.</li>`;
+        }
+        metaHTML += `<li><strong>آب:</strong> حداقل ${waterNeeds} لیتر در روز.</li></ul>`;
+        document.getElementById('metaAnalysis').innerHTML = metaHTML;
+
+        globalReportText = `🪞 *آیینه سلامت | Health Mirror*\n📊 *گزارش آنالیز سلامت*\n━━━━━━━━━━━━━━━━━━━━\n👤 ${gender === 'male' ? 'مرد' : 'زن'} | ${age} سال\n📏 ${height}cm | ⚖️ ${weight}kg\n🎯 هدف خودکار: ${goal === 'lose' ? 'کاهش چربی' : (goal === 'gain' ? 'عضله‌سازی' : 'حفظ وزن')}\n💡 دلیل: ${goalReason}\n━━━━━━━━━━━━━━━━━━━━\n`;
+        if (isTeen) globalReportText += `📌 BMI: ${bmi} (صدک ${percentile.toFixed(0)})\n📊 وضعیت: ${category}\n🎯 وزن سالم: ${idealWeightMin}-${idealWeightMax}kg (WHO)\n`;
+        else globalReportText += `📌 BMI: ${bmi} (${status})\n🎯 وزن سالم: ${idealWeightMin}-${idealWeightMax}kg (WHO)\n`;
+        globalReportText += `🔥 BMR: ${Math.round(bmr)} kcal\n⚡ TDEE: ${tdee} kcal\n🎯 کالری هدف: ${nutrition.targetCalories} kcal\n`;
+        if (isProMode) globalReportText += `━━━━━━━━━━━━━━━━━━━━\n🧬 *ترکیب بدنی:*\n• چربی: ${bodyFat}\n• LBM: ${lbm}\n• FFMI: ${ffmi}\n• احشایی: ${visceralFatStatus}\n`;
+        globalReportText += `━━━━━━━━━━━━━━━━━━━━\n🍽 *تغذیه:*\n• پروتئین: ${nutrition.pGrams}g (${nutrition.proteinMultiplier}g/kg LBM)\n• کربوهیدرات: ${nutrition.cGrams}g\n• چربی: ${nutrition.fGrams}g\n💧 آب: ${waterNeeds}L\n💤 خواب: ${sleepRec}\n━━━━━━━━━━━━━━━━━━━━\n`;
+        if (isTeen) globalReportText += `⚕️ *منبع:* WHO Growth Reference 2007\n`;
+        globalReportText += `⚕️ جایگزین تشخیص پزشک نیست.\n📅 ${new Date().toLocaleDateString('fa-IR')}`;
+
+        document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function drawPercentileChart(gender, age, bmi, percentile) {
+        const container = document.getElementById('percentileChart');
+        const legend = document.getElementById('percentileLegend');
+        const width = container.offsetWidth - 20;
+        const height = 300;
+        const padding = { top: 25, right: 25, bottom: 45, left: 50 };
+        const chartWidth = width - padding.left - padding.right;
+        const chartHeight = height - padding.top - padding.bottom;
+        const percentiles = [3, 5, 10, 25, 50, 75, 85, 90, 95, 97];
+        const colors = { 3: '#06b6d4', 5: '#0891b2', 10: '#10b981', 25: '#84cc16', 50: '#f59e0b', 75: '#84cc16', 85: '#f59e0b', 90: '#f97316', 95: '#ef4444', 97: '#dc2626' };
+        const curves = {};
+        percentiles.forEach(p => {
+            curves[p] = [];
+            const z = percentileToZ(p);
+            for (let a = 5; a <= 19; a += 0.5) {
+                const lms = getLMS(gender, a);
+                if (lms) curves[p].push({ age: a, bmi: zScoreToBMI(z, lms.L, lms.M, lms.S) });
+            }
+        });
+        let minBMI = Infinity, maxBMI = -Infinity;
+        Object.values(curves).forEach(curve => curve.forEach(pt => { minBMI = Math.min(minBMI, pt.bmi); maxBMI = Math.max(maxBMI, pt.bmi); }));
+        minBMI = Math.floor(minBMI - 1);
+        maxBMI = Math.ceil(maxBMI + 1);
+        const xScale = (a) => padding.left + ((a - 5) / 14) * chartWidth;
+        const yScale = (b) => padding.top + chartHeight - ((b - minBMI) / (maxBMI - minBMI)) * chartHeight;
+        let svg = `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">`;
+        svg += `<path d="M ${xScale(5)} ${yScale(minBMI)} L ${xScale(5)} ${yScale(curves[5][0].bmi)}`;
+        curves[5].forEach(pt => svg += ` L ${xScale(pt.age)} ${yScale(pt.bmi)}`);
+        svg += ` L ${xScale(19)} ${yScale(minBMI)} Z" fill="#06b6d4" opacity="0.12"/>`;
+        svg += `<path d="M ${xScale(5)} ${yScale(curves[5][0].bmi)}`;
+        curves[5].forEach(pt => svg += ` L ${xScale(pt.age)} ${yScale(pt.bmi)}`);
+        curves[85].slice().reverse().forEach(pt => svg += ` L ${xScale(pt.age)} ${yScale(pt.bmi)}`);
+        svg += ` Z" fill="#10b981" opacity="0.18"/>`;
+        svg += `<path d="M ${xScale(5)} ${yScale(curves[85][0].bmi)}`;
+        curves[85].forEach(pt => svg += ` L ${xScale(pt.age)} ${yScale(pt.bmi)}`);
+        curves[95].slice().reverse().forEach(pt => svg += ` L ${xScale(pt.age)} ${yScale(pt.bmi)}`);
+        svg += ` Z" fill="#f59e0b" opacity="0.18"/>`;
+        svg += `<path d="M ${xScale(5)} ${yScale(curves[95][0].bmi)}`;
+        curves[95].forEach(pt => svg += ` L ${xScale(pt.age)} ${yScale(pt.bmi)}`);
+        svg += ` L ${xScale(19)} ${yScale(maxBMI)} L ${xScale(5)} ${yScale(maxBMI)} Z" fill="#ef4444" opacity="0.18"/>`;
+        percentiles.forEach(p => {
+            let path = `M ${xScale(curves[p][0].age)} ${yScale(curves[p][0].bmi)}`;
+            curves[p].forEach(pt => path += ` L ${xScale(pt.age)} ${yScale(pt.bmi)}`);
+            svg += `<path d="${path}" fill="none" stroke="${colors[p]}" stroke-width="1.8" opacity="0.7"/>`;
+        });
+        svg += `<line x1="${padding.left}" y1="${padding.top + chartHeight}" x2="${padding.left + chartWidth}" y2="${padding.top + chartHeight}" stroke="#78716c" stroke-width="1.5"/>`;
+        svg += `<line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + chartHeight}" stroke="#78716c" stroke-width="1.5"/>`;
+        for (let a = 5; a <= 19; a += 2) {
+            const x = xScale(a);
+            svg += `<line x1="${x}" y1="${padding.top + chartHeight}" x2="${x}" y2="${padding.top + chartHeight + 6}" stroke="#78716c" stroke-width="1"/>`;
+            svg += `<text x="${x}" y="${padding.top + chartHeight + 22}" text-anchor="middle" font-size="12" fill="#78716c" font-weight="700">${a}</text>`;
+        }
+        svg += `<text x="${padding.left + chartWidth / 2}" y="${height - 8}" text-anchor="middle" font-size="13" fill="#57534e" font-weight="800">سن (سال)</text>`;
+        const bmiStep = Math.ceil((maxBMI - minBMI) / 6);
+        for (let b = minBMI; b <= maxBMI; b += bmiStep) {
+            const y = yScale(b);
+            svg += `<line x1="${padding.left - 6}" y1="${y}" x2="${padding.left}" y2="${y}" stroke="#78716c" stroke-width="1"/>`;
+            svg += `<text x="${padding.left - 10}" y="${y + 4}" text-anchor="end" font-size="11" fill="#78716c" font-weight="700">${b}</text>`;
+        }
+        svg += `<text x="15" y="${padding.top + chartHeight / 2}" text-anchor="middle" font-size="13" fill="#57534e" font-weight="800" transform="rotate(-90, 15, ${padding.top + chartHeight / 2})">BMI</text>`;
+        const userX = xScale(age);
+        const userY = yScale(bmi);
+        svg += `<circle cx="${userX}" cy="${userY}" r="9" fill="#ea580c" stroke="white" stroke-width="3"/>`;
+        svg += `<circle cx="${userX}" cy="${userY}" r="14" fill="none" stroke="#ea580c" stroke-width="2.5" opacity="0.6"><animate attributeName="r" from="9" to="18" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.7" to="0" dur="1.5s" repeatCount="indefinite"/></circle>`;
+        svg += `<text x="${userX}" y="${userY - 18}" text-anchor="middle" font-size="12" fill="#ea580c" font-weight="900">شما (P${percentile.toFixed(0)})</text>`;
+        svg += `</svg>`;
+        container.innerHTML = svg;
+        legend.innerHTML = `
+            <div class="legend-item"><div class="legend-color" style="background:#06b6d4"></div>P3-P5: کمبود وزن</div>
+            <div class="legend-item"><div class="legend-color" style="background:#10b981"></div>P5-P85: سالم</div>
+            <div class="legend-item"><div class="legend-color" style="background:#f59e0b"></div>P85-P95: اضافه وزن</div>
+            <div class="legend-item"><div class="legend-color" style="background:#ef4444"></div>≥P95: چاقی</div>
+        `;
+    }
+
+    function copyFormattedReport() {
+        if (!globalReportText) { alert("لطفاً ابتدا تحلیل را انجام دهید."); return; }
+        navigator.clipboard.writeText(globalReportText).then(() => {
+            const btn = document.querySelector('.btn-share');
+            const original = btn.innerHTML;
+            btn.innerHTML = "✅ کپی شد!";
+            btn.style.background = "linear-gradient(135deg, #059669, #047857)";
+            setTimeout(() => { btn.innerHTML = original; btn.style.background = ""; }, 2500);
+        }).catch(() => { alert("خطا در کپی. لطفاً دستی کپی کنید."); });
+    }
+
+    toggleProMode();
+    initTooltips();
+</script>
+</body>
+</html>
