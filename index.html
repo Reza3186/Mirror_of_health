@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#ea580c">
     <title>آیینه سلامت | Health Mirror</title>
     <script src="https://developer.eitaa.com/eitaa-web-app.js"></script>
-
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
         :root {
@@ -1615,6 +1615,13 @@
 
     toggleProMode();
     initTooltips();
+    if (window.Eitaa) {
+  window.Eitaa.WebApp.BackButton.show();
+  window.Eitaa.WebApp.BackButton.onClick(function() {
+    window.Eitaa.WebApp.close();
+  });
+    }
+    
 </script>
 </body>
 </html>
