@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#ea580c">
     <title>آیینه سلامت | Health Mirror</title>
+    <!-- ✅ ایتا SDK -->
     <script src="https://developer.eitaa.com/eitaa-web-app.js"></script>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
         :root {
@@ -638,6 +638,60 @@
 </div>
 
 <script>
+    /* ============ ✅ ایتا SDK و دکمه بازگشت ============ */
+    let isEitaaAvailable = (typeof Eitaa !== 'undefined' && Eitaa.WebApp);
+    let isInMainContainer = false;
+
+    function initEitaaSDK() {
+        if (isEitaaAvailable) {
+            try {
+                Eitaa.WebApp.ready();
+                Eitaa.WebApp.expand();
+                
+                // ✅ دکمه بازگشت ایتا
+                Eitaa.WebApp.BackButton.onClick(function() {
+                    if (isInMainContainer) {
+                        // در صفحه اصلی برنامک: بازگشت به صفحه مقدمه (اسلاید آخر)
+                        document.getElementById('mainContainer').style.display = 'none';
+                        document.getElementById('onboardingWrapper').style.display = 'flex';
+                        isInMainContainer = false;
+                        obShowSlide(obTotalSlides - 1);
+                    } else {
+                        // در صفحات مقدمه: بازگشت به اسلاید قبل
+                        if (obCurrentSlide > 0) {
+                            obPrevSlide();
+                        } else {
+                            // در اسلاید اول: بستن برنامک
+                            Eitaa.WebApp.close();
+                        }
+                    }
+                });
+            } catch(e) {
+                console.log('Eitaa SDK init error:', e);
+            }
+        }
+    }
+
+    function updateEitaaBackButton() {
+        if (isEitaaAvailable) {
+            try {
+                if (isInMainContainer) {
+                    // در صفحه اصلی: دکمه بازگشت نمایش داده شود
+                    Eitaa.WebApp.BackButton.show();
+                } else if (obCurrentSlide === 0) {
+                    // در اسلاید اول مقدمه: دکمه بازگشت مخفی (چون بازگشت به معنی خروج است)
+                    Eitaa.WebApp.BackButton.hide();
+                } else {
+                    // در اسلایدهای بعدی مقدمه: دکمه بازگشت نمایش داده شود
+                    Eitaa.WebApp.BackButton.show();
+                }
+            } catch(e) {
+                console.log('Eitaa BackButton error:', e);
+            }
+        }
+    }
+    /* ========================================== */
+
     /* ============ منطق صفحات مقدمه ============ */
     let obCurrentSlide = 0;
     const obTotalSlides = 5;
@@ -661,6 +715,10 @@
             nextBtn.disabled = false;
         }
         obCurrentSlide = index;
+        
+        // ✅ به‌روزرسانی دکمه بازگشت ایتا
+        isInMainContainer = false;
+        updateEitaaBackButton();
     }
 
     function obNextSlide() {
@@ -674,6 +732,8 @@
             }
             document.getElementById('onboardingWrapper').style.display = 'none';
             document.getElementById('mainContainer').style.display = 'block';
+            isInMainContainer = true;
+            updateEitaaBackButton();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
@@ -1613,15 +1673,11 @@
         }).catch(() => { alert("خطا در کپی. لطفاً دستی کپی کنید."); });
     }
 
+    // ✅ اجرای اولیه
+    initEitaaSDK();
+    updateEitaaBackButton();
     toggleProMode();
     initTooltips();
-    if (window.Eitaa) {
-  window.Eitaa.WebApp.BackButton.show();
-  window.Eitaa.WebApp.BackButton.onClick(function() {
-    window.Eitaa.WebApp.close();
-  });
-    }
-    
 </script>
 </body>
 </html>
