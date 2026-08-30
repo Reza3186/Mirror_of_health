@@ -161,6 +161,52 @@
         }
         /* ================================================ */
 
+        /* ============ ✅ دکمه‌های بازگشت و خروج ایتا ============ */
+        .eitaa-action-bar {
+            display: flex; justify-content: center; gap: 14px; margin-top: 20px; flex-wrap: wrap;
+        }
+        .eitaa-action-group {
+            display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-width: 140px; max-width: 200px;
+        }
+        .eitaa-action-btn {
+            width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 14px 18px; border-radius: 16px; font-size: 0.88rem; font-weight: 800;
+            cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none;
+            border: none; font-family: 'Vazirmatn', sans-serif; position: relative; overflow: hidden;
+        }
+        .eitaa-action-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .eitaa-action-btn:active::before { left: 100%; }
+        .eitaa-action-btn:active { transform: scale(0.96); }
+        
+        .eitaa-btn-back {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white;
+            box-shadow: 0 8px 20px -4px rgba(59, 130, 246, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .eitaa-btn-exit {
+            background: linear-gradient(135deg, #ef4444, #b91c1c); color: white;
+            box-shadow: 0 8px 20px -4px rgba(239, 68, 68, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .eitaa-btn-exit-solo {
+            width: 100%; max-width: 280px;
+        }
+        .eitaa-action-hint {
+            font-size: 0.68rem; color: var(--stone-500); font-weight: 600; text-align: center;
+            line-height: 1.5; padding: 0 4px;
+        }
+        .eitaa-action-btn-icon {
+            font-size: 1.15rem; display: flex; align-items: center;
+        }
+        .eitaa-back-divider {
+            width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--stone-200), transparent);
+            margin: 22px 0 18px;
+        }
+        /* ==================================================== */
+
         .container { max-width: 560px; margin: 0 auto; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 32px; padding: 24px; box-shadow: 0 25px 60px -12px rgba(249, 115, 22, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.9); position: relative; overflow: hidden; display: none; animation: obCardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange-400), var(--orange-600), var(--orange-400)); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
@@ -266,7 +312,7 @@
         .percentile-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; justify-content: center; }
         .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; color: var(--stone-600); }
         .legend-color { width: 14px; height: 14px; border-radius: 4px; }
-        @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .body-schema-stats { grid-template-columns: 1fr; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } }
+        @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .body-schema-stats { grid-template-columns: 1fr; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } .eitaa-action-btn { font-size: 0.82rem; padding: 12px 14px; } }
     </style>
 </head>
 <body>
@@ -331,6 +377,15 @@
                     <div class="ob-feature-icon">🍽️</div>
                     <div class="ob-feature-text"><b>برنامه تغذیه‌ای</b>محاسبه دقیق کالری، پروتئین و درشت‌مغذی‌ها</div>
                 </div>
+            </div>
+            <!-- ✅ دکمه خروج از برنامک در اسلاید اول (جایی که BackButton ایتا مخفی است) -->
+            <div class="eitaa-back-divider"></div>
+            <div class="eitaa-action-group" style="margin: 0 auto;">
+                <button type="button" class="eitaa-action-btn eitaa-btn-exit eitaa-btn-exit-solo" onclick="exitWebApp()">
+                    <span class="eitaa-action-btn-icon">🚪</span>
+                    <span>خروج از برنامک</span>
+                </button>
+                <div class="eitaa-action-hint">با لمس این دکمه، برنامک را می‌بندید</div>
             </div>
         </div>
 
@@ -634,11 +689,29 @@
         <button type="button" class="btn-share" onclick="copyFormattedReport()">
             📋 کپی گزارش برای ارسال
         </button>
+        <!-- ✅ نوار کنش‌های بازگشت و خروج در صفحه اصلی برنامک -->
+        <div class="eitaa-back-divider"></div>
+        <div class="eitaa-action-bar">
+            <div class="eitaa-action-group">
+                <button type="button" class="eitaa-action-btn eitaa-btn-back" onclick="goBackToIntro()">
+                    <span class="eitaa-action-btn-icon">→</span>
+                    <span>بازگشت به قبل</span>
+                </button>
+                <div class="eitaa-action-hint">بازگشت به صفحه راهنمای برنامک</div>
+            </div>
+            <div class="eitaa-action-group">
+                <button type="button" class="eitaa-action-btn eitaa-btn-exit" onclick="exitWebApp()">
+                    <span class="eitaa-action-btn-icon">🚪</span>
+                    <span>خروج از برنامک</span>
+                </button>
+                <div class="eitaa-action-hint">بستن کامل برنامک آیینه سلامت</div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-    /* ============ ✅ ایتا SDK و دکمه بازگشت ============ */
+    /* ============ ✅ ایتا SDK و دکمه‌های بازگشت/خروج ============ */
     let isEitaaAvailable = (typeof Eitaa !== 'undefined' && Eitaa.WebApp);
     let isInMainContainer = false;
 
@@ -648,20 +721,14 @@
                 Eitaa.WebApp.ready();
                 Eitaa.WebApp.expand();
                 
-                // ✅ دکمه بازگشت ایتا
+                // ✅ دکمه بازگشت ایتا (BackButton در هدر)
                 Eitaa.WebApp.BackButton.onClick(function() {
                     if (isInMainContainer) {
-                        // در صفحه اصلی برنامک: بازگشت به صفحه مقدمه (اسلاید آخر)
-                        document.getElementById('mainContainer').style.display = 'none';
-                        document.getElementById('onboardingWrapper').style.display = 'flex';
-                        isInMainContainer = false;
-                        obShowSlide(obTotalSlides - 1);
+                        goBackToIntro();
                     } else {
-                        // در صفحات مقدمه: بازگشت به اسلاید قبل
                         if (obCurrentSlide > 0) {
                             obPrevSlide();
                         } else {
-                            // در اسلاید اول: بستن برنامک
                             Eitaa.WebApp.close();
                         }
                     }
@@ -676,17 +743,48 @@
         if (isEitaaAvailable) {
             try {
                 if (isInMainContainer) {
-                    // در صفحه اصلی: دکمه بازگشت نمایش داده شود
                     Eitaa.WebApp.BackButton.show();
                 } else if (obCurrentSlide === 0) {
-                    // در اسلاید اول مقدمه: دکمه بازگشت مخفی (چون بازگشت به معنی خروج است)
                     Eitaa.WebApp.BackButton.hide();
                 } else {
-                    // در اسلایدهای بعدی مقدمه: دکمه بازگشت نمایش داده شود
                     Eitaa.WebApp.BackButton.show();
                 }
             } catch(e) {
                 console.log('Eitaa BackButton error:', e);
+            }
+        }
+    }
+
+    // ✅ تابع بازگشت به صفحه مقدمه
+    function goBackToIntro() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('onboardingWrapper').style.display = 'flex';
+        isInMainContainer = false;
+        obShowSlide(obTotalSlides - 1);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ✅ تابع خروج از برنامک (متناسب با SDK ایتا)
+    function exitWebApp() {
+        if (isEitaaAvailable) {
+            try {
+                // تأیید قبل از خروج (اختیاری ولی زیبا)
+                if (Eitaa.WebApp.showConfirm) {
+                    Eitaa.WebApp.showConfirm('آیا مطمئن هستید که می‌خواهید از آیینه سلامت خارج شوید؟', function(ok) {
+                        if (ok) Eitaa.WebApp.close();
+                    });
+                } else {
+                    Eitaa.WebApp.close();
+                }
+            } catch(e) {
+                // Fallback برای مرورگرهای معمولی
+                if (confirm('آیا مطمئن هستید که می‌خواهید از برنامک خارج شوید؟')) {
+                    window.close();
+                }
+            }
+        } else {
+            if (confirm('آیا مطمئن هستید که می‌خواهید از برنامک خارج شوید؟')) {
+                window.close();
             }
         }
     }
@@ -716,7 +814,6 @@
         }
         obCurrentSlide = index;
         
-        // ✅ به‌روزرسانی دکمه بازگشت ایتا
         isInMainContainer = false;
         updateEitaaBackButton();
     }
@@ -857,7 +954,6 @@
         return { goal, reason };
     }
 
-    // ✅ تابع بهبودیافته محاسبه تغذیه - ماتریس دقیق (هدف × فعالیت)
     function calculateNutrition(targetCalories, weight, age, gender, goal, isTeen, activity, bodyFatPercent, isProMode) {
         let proteinGrams, fatRatio, carbRatio;
         
@@ -866,7 +962,6 @@
             lbm = weight * (1 - bodyFatPercent / 100);
         }
         
-        // ✅ ماتریس دقیق پروتئین بر اساس (هدف × سطح فعالیت)
         let proteinMultiplier;
         
         if (isTeen) {
@@ -941,7 +1036,6 @@
         return parseFloat(totalWater.toFixed(1));
     }
 
-    // ✅ تابع بهبودیافته شکل شماتیک - با شاخص ترکیبی بدن
     function generateBodySchema(bmi, gender, goal, bodyFatPercent, isProMode, age, waist, neck, hip, wrist) {
         let bodyScale = 1.0, bellyScale = 0;
         let shoulderWidth = gender === 'male' ? 70 : 52;
@@ -953,7 +1047,6 @@
         let bodyColor, bodyColorLight, bodyColorDark;
         let muscleDefinition = 0;
         
-        // ✅ شاخص ترکیبی بدن (Body Shape Index) - جایگزین BMI خالص
         let bodyShapeIndex = bmi;
         if (isProMode) {
             if (waist > 0) {
@@ -973,7 +1066,6 @@
             }
         }
         
-        // تنظیم پایه بر اساس Body Shape Index
         if (bodyShapeIndex < 18.5) {
             bodyScale = 0.85; shoulderWidth *= 0.9; hipWidth *= 0.9; waistWidth *= 0.85; chestWidth *= 0.9;
             bodyColor = '#06b6d4'; bodyColorLight = '#67e8f9'; bodyColorDark = '#0891b2'; muscleDefinition = 0.3;
@@ -1039,9 +1131,7 @@
         const aw = armWidth * bodyScale;
         const bellyExtra = bellyScale * bodyScale;
 
-        // ✅ طراحی کاملاً جدید حجاب و چهره زنانه - روسری کوچک‌تر و ظریف‌تر
         const hijabSvg = gender === 'female' ? `
-            <!-- حجاب: لایه پس‌زمینه - فقط دور سر و گردن -->
             <path d="M ${cx - headR - 6} ${headY + 12}
                      C ${cx - headR - 10} ${headY - headR - 6}, ${cx + headR + 10} ${headY - headR - 6}, ${cx + headR + 6} ${headY + 12}
                      L ${cx + headR + 8} ${headY + 40}
@@ -1050,7 +1140,6 @@
                      Q ${cx - sw - 6} ${shoulderY + 12}, ${cx - headR - 8} ${headY + 40}
                      Z"
                   fill="url(#hijabGrad)" opacity="0.97"/>
-            <!-- تزئین کناری حجاب -->
             <circle cx="${cx + headR + 6}" cy="${headY + 8}" r="2.5" fill="#fbbf24" opacity="0.95"/>
             <circle cx="${cx + headR + 6}" cy="${headY + 8}" r="1" fill="#fef9c3" opacity="0.7"/>
         ` : `
@@ -1078,7 +1167,6 @@
         const goalIcon = goal === 'gain' ? '💪' : goal === 'lose' ? '🔥' : '⚖️';
         const goalColor = goal === 'gain' ? '#3b82f6' : goal === 'lose' ? '#f59e0b' : '#10b981';
 
-        // ✅ لایه نیم‌دایره بالای پیشانی برای زنان (هدبند روسری)
         const foreheadBand = gender === 'female' ? `
             <path d="M ${cx - headR * 0.72} ${headY - headR * 0.45}
                      Q ${cx} ${headY - headR * 1.05} ${cx + headR * 0.72} ${headY - headR * 0.45}
@@ -1097,7 +1185,6 @@
                         <stop offset="50%" style="stop-color:${bodyColor};stop-opacity:1" />
                         <stop offset="100%" style="stop-color:${bodyColorDark};stop-opacity:1" />
                     </linearGradient>
-                    <!-- ✅ رنگ پوست طبیعی هلویی - متمایز از حجاب -->
                     <radialGradient id="skinGrad" cx="50%" cy="40%" r="60%">
                         <stop offset="0%" style="stop-color:#FDBCB4;stop-opacity:1" />
                         <stop offset="70%" style="stop-color:#F5D0A9;stop-opacity:1" />
@@ -1111,7 +1198,6 @@
                     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
                         <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.2"/>
                     </filter>
-                    <!-- ✅ clipPath برای جداسازی صورت از حجاب -->
                     <clipPath id="faceClip">
                         <ellipse cx="${cx}" cy="${headY + 3}" rx="${headR * 0.82}" ry="${headR * 0.92}"/>
                     </clipPath>
@@ -1137,40 +1223,29 @@
                 
                 <rect x="${cx - nw/2}" y="${neckY}" width="${nw}" height="18" rx="5" fill="url(#skinGrad)"/>
                 
-                <!-- ✅ چهره کاملاً بازطراحی شده - حجاب و صورت جدا هستند -->
                 <g filter="url(#shadow)">
-                    <!-- حجاب: لایه پس‌زمینه -->
                     ${hijabSvg}
                     
-                    <!-- صورت با clipPath - فقط ناحیه بیضی صورت قابل دیدن است -->
                     <g clip-path="url(#faceClip)">
                         <ellipse cx="${cx}" cy="${headY + 2}" rx="${headR}" ry="${headR}" fill="url(#skinGrad)"/>
-                        <!-- سایه گونه‌ها -->
                         <circle cx="${cx - 11}" cy="${headY + 9}" r="3.5" fill="#fca5a5" opacity="0.45"/>
                         <circle cx="${cx + 11}" cy="${headY + 9}" r="3.5" fill="#fca5a5" opacity="0.45"/>
                     </g>
                     
-                    <!-- اجزای صورت - روی پوست -->
-                    <!-- چشم‌ها -->
                     <ellipse cx="${cx - 7}" cy="${headY + 2}" rx="3.2" ry="3.6" fill="white"/>
                     <ellipse cx="${cx + 7}" cy="${headY + 2}" rx="3.2" ry="3.6" fill="white"/>
                     <circle cx="${cx - 7}" cy="${headY + 2.5}" r="1.9" fill="#1c1917"/>
                     <circle cx="${cx + 7}" cy="${headY + 2.5}" r="1.9" fill="#1c1917"/>
-                    <!-- برق چشم -->
                     <circle cx="${cx - 6.3}" cy="${headY + 1.8}" r="0.7" fill="white"/>
                     <circle cx="${cx + 7.7}" cy="${headY + 1.8}" r="0.7" fill="white"/>
                     
-                    <!-- ابروها -->
                     <path d="M ${cx - 10.5} ${headY - 3.5} Q ${cx - 7} ${headY - 6} ${cx - 3.5} ${headY - 3.5}" stroke="#57534e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                     <path d="M ${cx + 3.5} ${headY - 3.5} Q ${cx + 7} ${headY - 6} ${cx + 10.5} ${headY - 3.5}" stroke="#57534e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                     
-                    <!-- بینی -->
                     <path d="M ${cx} ${headY + 3.5} L ${cx - 2.2} ${headY + 9} L ${cx + 2.2} ${headY + 9}" stroke="#d4a373" stroke-width="1.1" fill="none" stroke-linecap="round"/>
                     
-                    <!-- لب‌ها -->
                     <path d="M ${cx - 5.5} ${headY + 13} Q ${cx - 2.5} ${headY + 15.5} ${cx} ${headY + 15} Q ${cx + 2.5} ${headY + 15.5} ${cx + 5.5} ${headY + 13}" stroke="#dc2626" stroke-width="1.6" fill="none" stroke-linecap="round"/>
                     
-                    <!-- ✅ لایه نیم‌دایره بالای پیشانی (هدبند روسری) -->
                     ${foreheadBand}
                 </g>
                 
