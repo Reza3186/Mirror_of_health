@@ -1981,15 +1981,29 @@
         if (isEitaaAvailable) {
             try {
                 Eitaa.WebApp.ready();
+                // تمام‌صفحه کردن برنامک
                 Eitaa.WebApp.expand();
+                
+                // مدیریت دکمه بازگشت گوشی
                 Eitaa.WebApp.BackButton.onClick(function() {
                     if (isInMainContainer) {
+                        // اگر در صفحه اصلی هستیم، به صفحه مقدمه برگردیم
                         goBackWithClear();
                     } else {
                         if (obCurrentSlide > 0) {
+                            // به اسلاید قبلی برو
                             obPrevSlide();
                         } else {
-                            Eitaa.WebApp.close();
+                            // در اسلاید اول هستیم، با تأیید خارج شو
+                            if (isEitaaAvailable && Eitaa.WebApp.showConfirm) {
+                                Eitaa.WebApp.showConfirm('آیا مطمئن هستید که می‌خواهید خارج شوید؟', function(ok) {
+                                    if (ok) Eitaa.WebApp.close();
+                                });
+                            } else {
+                                if (confirm('آیا مطمئن هستید که می‌خواهید خارج شوید؟')) {
+                                    Eitaa.WebApp.close();
+                                }
+                            }
                         }
                     }
                 });
@@ -2028,7 +2042,7 @@
             document.getElementById('mainContainer').style.display = 'none';
             document.getElementById('onboardingWrapper').style.display = 'flex';
             isInMainContainer = false;
-            obShowSlide(obTotalSlides - 1);
+            obShowSlide(obTotalSlides - 1); // نمایش آخرین اسلاید (صفحه توافق)
         }
         updateTopButtons();
         window.scrollTo({ top: 0, behavior: 'smooth' });
