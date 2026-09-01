@@ -20,9 +20,77 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
         html { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
-        body { background: var(--stone-50); color: var(--stone-900); min-height: 100vh; overflow-x: hidden; position: relative; padding: 12px; }
+        body { background: var(--stone-50); color: var(--stone-900); min-height: 100vh; overflow-x: hidden; position: relative; padding: 12px; transition: padding-top 0.3s ease; }
+        body.has-top-bar { padding-top: 82px; }
         body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(at 20% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 50%), radial-gradient(at 80% 80%, rgba(234, 88, 12, 0.1) 0%, transparent 50%), radial-gradient(at 50% 50%, rgba(251, 146, 60, 0.08) 0%, transparent 50%); z-index: -1; animation: meshMove 20s ease-in-out infinite; }
         @keyframes meshMove { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(2deg); } }
+
+        /* ============ 🆕 نوار کنش‌های بالایی (Top Action Bar) ============ */
+        .top-action-bar {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            z-index: 9999;
+            display: none;
+            gap: 8px;
+            justify-content: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 22px;
+            box-shadow: 0 10px 35px -8px rgba(249, 115, 22, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.9), inset 0 1px 0 rgba(255, 255, 255, 1);
+            animation: obCardIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .top-action-bar.visible { display: flex; }
+        .top-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 11px 14px;
+            border-radius: 15px;
+            border: none;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+            flex: 1;
+            max-width: 160px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        .top-action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .top-action-btn:active::before { left: 100%; }
+        .top-action-btn:active { transform: scale(0.95); }
+        .top-action-btn.back {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            box-shadow: 0 8px 18px -4px rgba(59, 130, 246, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .top-action-btn.clear {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 8px 18px -4px rgba(245, 158, 11, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .top-action-btn.exit {
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            box-shadow: 0 8px 18px -4px rgba(239, 68, 68, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .top-action-btn-icon { font-size: 1.15rem; display: flex; align-items: center; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+        .top-action-btn.hidden { display: none; }
+        /* ================================================================ */
 
         /* ============ برند و لوگوی آیینه سلامت ============ */
         .brand-hero { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
@@ -160,52 +228,6 @@
             border: 1px solid #fcd34d; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
         }
         /* ================================================ */
-
-        /* ============ ✅ دکمه‌های بازگشت و خروج ایتا ============ */
-        .eitaa-action-bar {
-            display: flex; justify-content: center; gap: 14px; margin-top: 20px; flex-wrap: wrap;
-        }
-        .eitaa-action-group {
-            display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-width: 140px; max-width: 200px;
-        }
-        .eitaa-action-btn {
-            width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 14px 18px; border-radius: 16px; font-size: 0.88rem; font-weight: 800;
-            cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-tap-highlight-color: transparent; touch-action: manipulation; user-select: none;
-            border: none; font-family: 'Vazirmatn', sans-serif; position: relative; overflow: hidden;
-        }
-        .eitaa-action-btn::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        .eitaa-action-btn:active::before { left: 100%; }
-        .eitaa-action-btn:active { transform: scale(0.96); }
-        
-        .eitaa-btn-back {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white;
-            box-shadow: 0 8px 20px -4px rgba(59, 130, 246, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
-        }
-        .eitaa-btn-exit {
-            background: linear-gradient(135deg, #ef4444, #b91c1c); color: white;
-            box-shadow: 0 8px 20px -4px rgba(239, 68, 68, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
-        }
-        .eitaa-btn-exit-solo {
-            width: 100%; max-width: 280px;
-        }
-        .eitaa-action-hint {
-            font-size: 0.68rem; color: var(--stone-500); font-weight: 600; text-align: center;
-            line-height: 1.5; padding: 0 4px;
-        }
-        .eitaa-action-btn-icon {
-            font-size: 1.15rem; display: flex; align-items: center;
-        }
-        .eitaa-back-divider {
-            width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--stone-200), transparent);
-            margin: 22px 0 18px;
-        }
-        /* ==================================================== */
 
         .container { max-width: 560px; margin: 0 auto; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 32px; padding: 24px; box-shadow: 0 25px 60px -12px rgba(249, 115, 22, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.9); position: relative; overflow: hidden; display: none; animation: obCardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange-400), var(--orange-600), var(--orange-400)); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
@@ -347,10 +369,26 @@
         .custom-alert-btn:active { transform: scale(0.97); }
         /* ==================================================== */
 
-        @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .body-schema-stats { grid-template-columns: 1fr; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } .eitaa-action-btn { font-size: 0.82rem; padding: 12px 14px; } }
+        @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .body-schema-stats { grid-template-columns: 1fr; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } .top-action-btn { font-size: 0.78rem; padding: 9px 10px; gap: 4px; } .top-action-btn-icon { font-size: 1rem; } .top-action-bar { padding: 8px; gap: 6px; } }
     </style>
 </head>
 <body>
+
+<!-- 🆕 نوار کنش‌های بالایی (در تمام منوها قابل رویت) -->
+<div class="top-action-bar" id="topActionBar">
+    <button type="button" class="top-action-btn back" onclick="handleTopBack()">
+        <span class="top-action-btn-icon">→</span>
+        <span>بازگشت</span>
+    </button>
+    <button type="button" class="top-action-btn clear" id="clearBtn" onclick="clearAllInputs()">
+        <span class="top-action-btn-icon">🧹</span>
+        <span>پاک کردن</span>
+    </button>
+    <button type="button" class="top-action-btn exit" onclick="exitWebApp()">
+        <span class="top-action-btn-icon">🚪</span>
+        <span>خروج</span>
+    </button>
+</div>
 
 <!-- تعریف گرادیان‌های مشترک لوگو -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -412,15 +450,6 @@
                     <div class="ob-feature-icon">🍽️</div>
                     <div class="ob-feature-text"><b>برنامه تغذیه‌ای</b>محاسبه دقیق کالری، پروتئین و درشت‌مغذی‌ها</div>
                 </div>
-            </div>
-            <!-- ✅ دکمه خروج از برنامک در اسلاید اول (جایی که BackButton ایتا مخفی است) -->
-            <div class="eitaa-back-divider"></div>
-            <div class="eitaa-action-group" style="margin: 0 auto;">
-                <button type="button" class="eitaa-action-btn eitaa-btn-exit eitaa-btn-exit-solo" onclick="exitWebApp()">
-                    <span class="eitaa-action-btn-icon">🚪</span>
-                    <span>خروج از برنامک</span>
-                </button>
-                <div class="eitaa-action-hint">با لمس این دکمه، برنامک را می‌بندید</div>
             </div>
         </div>
 
@@ -724,29 +753,11 @@
         <button type="button" class="btn-share" onclick="copyFormattedReport()">
             📋 کپی گزارش برای ارسال
         </button>
-        <!-- ✅ نوار کنش‌های بازگشت و خروج در صفحه اصلی برنامک -->
-        <div class="eitaa-back-divider"></div>
-        <div class="eitaa-action-bar">
-            <div class="eitaa-action-group">
-                <button type="button" class="eitaa-action-btn eitaa-btn-back" onclick="goBackToIntro()">
-                    <span class="eitaa-action-btn-icon">→</span>
-                    <span>بازگشت به قبل</span>
-                </button>
-                <div class="eitaa-action-hint">بازگشت به صفحه راهنمای برنامک</div>
-            </div>
-            <div class="eitaa-action-group">
-                <button type="button" class="eitaa-action-btn eitaa-btn-exit" onclick="exitWebApp()">
-                    <span class="eitaa-action-btn-icon">🚪</span>
-                    <span>خروج از برنامک</span>
-                </button>
-                <div class="eitaa-action-hint">بستن کامل برنامک آیینه سلامت</div>
-            </div>
-        </div>
     </div>
 </div>
 
 <script>
-    /* ============ ✅ ایتا SDK و دکمه‌های بازگشت/خروج ============ */
+    /* ============ ✅ ایتا SDK و نوار کنش‌های بالا ============ */
     let isEitaaAvailable = (typeof Eitaa !== 'undefined' && Eitaa.WebApp);
     let isInMainContainer = false;
 
@@ -758,15 +769,7 @@
                 
                 // ✅ دکمه بازگشت ایتا (BackButton در هدر)
                 Eitaa.WebApp.BackButton.onClick(function() {
-                    if (isInMainContainer) {
-                        goBackToIntro();
-                    } else {
-                        if (obCurrentSlide > 0) {
-                            obPrevSlide();
-                        } else {
-                            Eitaa.WebApp.close();
-                        }
-                    }
+                    handleTopBack();
                 });
             } catch(e) {
                 console.log('Eitaa SDK init error:', e);
@@ -790,12 +793,81 @@
         }
     }
 
-    // ✅ تابع بازگشت به صفحه مقدمه
+    /* ============ 🆕 مدیریت نوار کنش‌های بالا ============ */
+    function updateTopActionBar() {
+        const bar = document.getElementById('topActionBar');
+        const clearBtn = document.getElementById('clearBtn');
+        const resultBox = document.getElementById('resultBox');
+        
+        if (isInMainContainer) {
+            bar.classList.add('visible');
+            document.body.classList.add('has-top-bar');
+            // دکمه پاک کردن فقط در فرم ورود اطلاعات نمایش داده می‌شود (نه در نتایج)
+            if (resultBox && resultBox.style.display === 'block') {
+                clearBtn.classList.add('hidden');
+            } else {
+                clearBtn.classList.remove('hidden');
+            }
+        } else {
+            bar.classList.remove('visible');
+            document.body.classList.remove('has-top-bar');
+        }
+    }
+
+    // 🆕 دکمه بازگشت (هماهنگ با SDK ایتا و نوار بالا)
+    function handleTopBack() {
+        if (isInMainContainer) {
+            const resultBox = document.getElementById('resultBox');
+            if (resultBox.style.display === 'block') {
+                // در صفحه نتایج - بازگشت به فرم و پاک کردن اطلاعات قبلی
+                resultBox.style.display = 'none';
+                clearAllInputs(true); // true = بدون اسکرول اضافی
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                updateTopActionBar();
+            } else {
+                // در فرم اصلی - بازگشت به صفحه مقدمه و پاک کردن اطلاعات
+                goBackToIntro();
+            }
+        } else {
+            // در صفحات مقدمه
+            if (obCurrentSlide > 0) {
+                obPrevSlide();
+            } else {
+                exitWebApp();
+            }
+        }
+    }
+
+    // 🆕 دکمه پاک کردن اطلاعات
+    function clearAllInputs(skipScroll = false) {
+        // پاک کردن تمام ورودی‌های عددی
+        document.querySelectorAll('#mainContainer input[type="number"]').forEach(input => {
+            input.value = '';
+        });
+        // ریست کردن سلکت‌ها
+        document.getElementById('gender').selectedIndex = 0;
+        document.getElementById('activity').selectedIndex = 0;
+        // خاموش کردن حالت تخصصی
+        document.getElementById('proModeToggle').checked = false;
+        toggleProMode();
+        toggleGenderFields();
+        // مخفی کردن نتایج
+        document.getElementById('resultBox').style.display = 'none';
+        updateTopActionBar();
+        if (!skipScroll) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+    /* ======================================================== */
+
+    // ✅ تابع بازگشت به صفحه مقدمه (با پاک کردن اطلاعات)
     function goBackToIntro() {
+        clearAllInputs(true);
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('onboardingWrapper').style.display = 'flex';
         isInMainContainer = false;
         obShowSlide(obTotalSlides - 1);
+        updateTopActionBar();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -803,7 +875,6 @@
     function exitWebApp() {
         if (isEitaaAvailable) {
             try {
-                // تأیید قبل از خروج (اختیاری ولی زیبا)
                 if (Eitaa.WebApp.showConfirm) {
                     Eitaa.WebApp.showConfirm('آیا مطمئن هستید که می‌خواهید از آیینه سلامت خارج شوید؟', function(ok) {
                         if (ok) Eitaa.WebApp.close();
@@ -812,7 +883,6 @@
                     Eitaa.WebApp.close();
                 }
             } catch(e) {
-                // Fallback برای مرورگرهای معمولی
                 if (confirm('آیا مطمئن هستید که می‌خواهید از برنامک خارج شوید؟')) {
                     window.close();
                 }
@@ -823,7 +893,6 @@
             }
         }
     }
-    /* ========================================== */
 
     /* ============ منطق صفحات مقدمه ============ */
     let obCurrentSlide = 0;
@@ -851,6 +920,7 @@
         
         isInMainContainer = false;
         updateEitaaBackButton();
+        updateTopActionBar();
     }
 
     function obNextSlide() {
@@ -866,6 +936,7 @@
             document.getElementById('mainContainer').style.display = 'block';
             isInMainContainer = true;
             updateEitaaBackButton();
+            updateTopActionBar();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
@@ -1401,6 +1472,7 @@
         const isTeen = age < 20;
         
         document.getElementById('resultBox').style.display = 'block';
+        updateTopActionBar(); // 🆕 مخفی کردن دکمه پاک کردن بعد از نمایش نتایج
         
         let status = "", cardBg = "", percentile = 0, category = "";
         let idealWeightMin, idealWeightMax;
@@ -1809,6 +1881,7 @@
     // ✅ اجرای اولیه
     initEitaaSDK();
     updateEitaaBackButton();
+    updateTopActionBar();
     toggleProMode();
     initTooltips();
 </script>
