@@ -222,11 +222,6 @@
         .ob-agreement input { width: 22px; height: 22px; accent-color: var(--orange-600); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
         .ob-agreement-text { font-size: 0.78rem; color: var(--stone-700); font-weight: 700; line-height: 1.8; }
         .ob-btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-        .ob-version-badge {
-            position: absolute; top: 18px; left: 18px; background: linear-gradient(135deg, #fef3c7, #fde68a);
-            color: #92400e; font-size: 0.68rem; font-weight: 900; padding: 5px 12px; border-radius: 50px;
-            border: 1px solid #fcd34d; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-        }
         /* ================================================ */
 
         .container { max-width: 560px; margin: 0 auto; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 32px; padding: 24px; box-shadow: 0 25px 60px -12px rgba(249, 115, 22, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.9); position: relative; overflow: hidden; display: none; animation: obCardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -295,16 +290,6 @@
         .goal-stat-value { font-size: 1.4rem; font-weight: 900; line-height: 1.2; }
         .goal-stat-label { font-size: 0.72rem; opacity: 0.85; font-weight: 600; margin-top: 2px; }
         .goal-reason { margin-top: 14px; padding: 12px 14px; background: rgba(255,255,255,0.15); border-radius: 12px; font-size: 0.82rem; line-height: 1.7; backdrop-filter: blur(10px); }
-        .body-schema-card { margin-bottom: 24px; background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(250,250,249,0.9)); backdrop-filter: blur(10px); border-radius: 24px; padding: 24px; border: 2px solid var(--orange-100); box-shadow: 0 12px 32px -8px rgba(249, 115, 22, 0.15); animation: fadeInContent 0.5s ease-out; position: relative; overflow: hidden; }
-        .body-schema-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange-400), var(--orange-600), var(--orange-400)); background-size: 200% 100%; animation: shimmer 3s linear infinite; }
-        .body-schema-title { font-size: 1rem; font-weight: 900; color: var(--stone-900); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; text-align: center; justify-content: center; }
-        .body-schema-container { display: flex; justify-content: center; align-items: center; padding: 20px 0; background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(249, 115, 22, 0.03)); border-radius: 16px; margin-bottom: 16px; }
-        .body-schema-container svg { max-width: 200px; height: auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1)); }
-        .body-schema-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--orange-100); }
-        .body-stat { text-align: center; padding: 12px 8px; background: linear-gradient(135deg, var(--orange-50), rgba(255,255,255,0.8)); border-radius: 14px; border: 1px solid var(--orange-100); transition: transform 0.2s; }
-        .body-stat:active { transform: scale(0.97); }
-        .body-stat-value { font-size: 1.05rem; font-weight: 900; color: var(--orange-700); line-height: 1.2; }
-        .body-stat-label { font-size: 0.7rem; color: var(--stone-600); font-weight: 700; margin-top: 4px; }
         .age-warning { background: linear-gradient(135deg, var(--orange-50), var(--orange-100)); border: 1px solid var(--orange-300); color: var(--orange-900); padding: 16px; border-radius: 18px; font-size: 0.85rem; margin-bottom: 20px; display: flex; gap: 14px; align-items: flex-start; line-height: 1.7; box-shadow: 0 4px 16px rgba(249, 115, 22, 0.15); }
         .age-warning-icon { font-size: 1.5rem; flex-shrink: 0; }
         .chart-container { margin: 24px 0; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); padding: 20px; border-radius: 22px; border: 1px solid var(--stone-200); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
@@ -369,7 +354,7 @@
         .custom-alert-btn:active { transform: scale(0.97); }
         /* ==================================================== */
 
-        @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .body-schema-stats { grid-template-columns: 1fr; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } .top-action-btn { font-size: 0.78rem; padding: 9px 10px; gap: 4px; } .top-action-btn-icon { font-size: 1rem; } .top-action-bar { padding: 8px; gap: 6px; } }
+        @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } .top-action-btn { font-size: 0.78rem; padding: 9px 10px; gap: 4px; } .top-action-btn-icon { font-size: 1rem; } .top-action-bar { padding: 8px; gap: 6px; } }
     </style>
 </head>
 <body>
@@ -413,7 +398,6 @@
 <!-- ==================== صفحات مقدمه و راهنما ==================== -->
 <div class="onboarding-wrapper" id="onboardingWrapper">
     <div class="onboarding-card">
-        <div class="ob-version-badge">نسخه آزمایشی β</div>
 
         <!-- اسلاید ۱: خوش‌آمدگویی با لوگوی برند -->
         <div class="ob-slide active" id="obSlide1">
@@ -458,9 +442,9 @@
             <div class="ob-icon">⚠️</div>
             <div class="ob-title">هشدارهای مهم</div>
             <div class="ob-warning-box">
-                <div class="ob-warning-title">🚨 نسخه آزمایشی (Beta)</div>
+                <div class="ob-warning-title">🚨 دقت محاسبات</div>
                 <div class="ob-warning-text">
-                    این برنامه در <b>نسخه آزمایشی</b> قرار دارد و ممکن است دارای خطا، باگ یا محاسبات نادرست باشد. نتایج ارائه‌شده ممکن است در برخی موارد دقیق نباشند.
+                    این سامانه بر اساس فرمول‌های استاندارد علمی طراحی شده، اما ممکن است در برخی محاسبات جزئی دارای خطا یا تفاوت‌های کوچک با مقادیر دقیق آزمایشگاهی باشد. نتایج ارائه‌شده جنبه <b>تخمینی و راهنما</b> دارند.
                 </div>
             </div>
             <div class="ob-warning-box warning-yellow">
@@ -535,13 +519,13 @@
             </p>
             <div class="ob-warning-box warning-yellow">
                 <div class="ob-warning-text" style="font-size: 0.82rem;">
-                    ⚠️ یادآوری: این برنامه نسخه آزمایشی است، ممکن است خطا داشته باشد و به هیچ وجه جایگزین مشاوره پزشکی نیست.
+                    ⚠️ یادآوری: این سامانه ممکن است در برخی محاسبات جزئی دارای خطا باشد و به هیچ وجه جایگزین مشاوره پزشکی نیست.
                 </div>
             </div>
             <label class="ob-agreement" for="obAgreeCheckbox">
                 <input type="checkbox" id="obAgreeCheckbox" onchange="checkAgreement()">
                 <span class="ob-agreement-text">
-                    متوجه شدم که این برنامه <b>نسخه آزمایشی</b> است، ممکن است دارای خطا باشد و نتایج آن جایگزین تشخیص و مشاوره پزشکی <b>نیست</b>. مسئولیت استفاده از نتایج بر عهده خودم است.
+                    متوجه شدم که این سامانه ممکن است دارای خطاهای جزئی در محاسبات باشد و نتایج آن جایگزین تشخیص و مشاوره پزشکی <b>نیست</b>. مسئولیت استفاده از نتایج بر عهده خودم است.
                 </span>
             </label>
         </div>
@@ -679,7 +663,6 @@
                 <div id="ageWarningText"></div>
             </div>
             <div id="goalCard" class="goal-card" style="display: none;"></div>
-            <div id="bodySchemaCard" class="body-schema-card" style="display: none;"></div>
             <div class="score-card" id="scoreCard">
                 <div class="score-label" id="mainStatus">در حال محاسبه...</div>
                 <div class="score-value" id="mainScore">--</div>
@@ -1142,232 +1125,6 @@
         return parseFloat(totalWater.toFixed(1));
     }
 
-    function generateBodySchema(bmi, gender, goal, bodyFatPercent, isProMode, age, waist, neck, hip, wrist) {
-        let bodyScale = 1.0, bellyScale = 0;
-        let shoulderWidth = gender === 'male' ? 70 : 52;
-        let hipWidth = gender === 'male' ? 48 : 62;
-        let waistWidth = gender === 'male' ? 52 : 42;
-        let chestWidth = gender === 'male' ? 62 : 52;
-        let neckWidth = gender === 'male' ? 12 : 10;
-        let armWidth = gender === 'male' ? 14 : 11;
-        let bodyColor, bodyColorLight, bodyColorDark;
-        let muscleDefinition = 0;
-        
-        let bodyShapeIndex = bmi;
-        if (isProMode) {
-            if (waist > 0) {
-                const waistExpected = gender === 'male' ? 85 : 75;
-                const waistRatio = waist / waistExpected;
-                bodyShapeIndex *= Math.pow(waistRatio, 0.4);
-            }
-            if (bodyFatPercent > 0) {
-                const bfExpected = gender === 'male' ? 20 : 28;
-                const bfRatio = bodyFatPercent / bfExpected;
-                bodyShapeIndex *= Math.pow(bfRatio, 0.3);
-            }
-            if (neck > 0) {
-                const neckExpected = gender === 'male' ? 38 : 33;
-                const neckRatio = neck / neckExpected;
-                bodyShapeIndex *= Math.pow(neckRatio, 0.15);
-            }
-        }
-        
-        if (bodyShapeIndex < 18.5) {
-            bodyScale = 0.85; shoulderWidth *= 0.9; hipWidth *= 0.9; waistWidth *= 0.85; chestWidth *= 0.9;
-            bodyColor = '#06b6d4'; bodyColorLight = '#67e8f9'; bodyColorDark = '#0891b2'; muscleDefinition = 0.3;
-        } else if (bodyShapeIndex < 22) {
-            bodyScale = 0.95; bodyColor = '#10b981'; bodyColorLight = '#6ee7b7'; bodyColorDark = '#059669'; muscleDefinition = 0.5;
-        } else if (bodyShapeIndex < 25) {
-            bodyScale = 1.0; bodyColor = '#10b981'; bodyColorLight = '#6ee7b7'; bodyColorDark = '#059669'; muscleDefinition = 0.3;
-        } else if (bodyShapeIndex < 28) {
-            bodyScale = 1.05; bellyScale = 8; shoulderWidth *= 1.05; hipWidth *= 1.1; waistWidth *= 1.15; chestWidth *= 1.05;
-            bodyColor = '#f59e0b'; bodyColorLight = '#fcd34d'; bodyColorDark = '#d97706'; muscleDefinition = 0.1;
-        } else if (bodyShapeIndex < 32) {
-            bodyScale = 1.12; bellyScale = 15; shoulderWidth *= 1.1; hipWidth *= 1.2; waistWidth *= 1.3; chestWidth *= 1.1;
-            bodyColor = '#f97316'; bodyColorLight = '#fdba74'; bodyColorDark = '#ea580c'; muscleDefinition = 0;
-        } else {
-            bodyScale = 1.2; bellyScale = 22; shoulderWidth *= 1.15; hipWidth *= 1.3; waistWidth *= 1.4; chestWidth *= 1.15;
-            bodyColor = '#ef4444'; bodyColorLight = '#fca5a5'; bodyColorDark = '#dc2626'; muscleDefinition = 0;
-        }
-
-        if (isProMode) {
-            if (waist > 0) {
-                const waistExpected = gender === 'male' ? 85 : 75;
-                const waistRatio = waist / waistExpected;
-                if (waistRatio > 1.0) {
-                    bellyScale += (waistRatio - 1.0) * 20;
-                    waistWidth *= Math.min(waistRatio, 1.5);
-                }
-            }
-            if (neck > 0) {
-                const neckExpected = gender === 'male' ? 38 : 33;
-                const neckRatio = neck / neckExpected;
-                neckWidth *= Math.max(0.8, Math.min(neckRatio, 1.4));
-            }
-            if (gender === 'female' && hip > 0) {
-                const hipExpected = 95;
-                const hipRatio = hip / hipExpected;
-                hipWidth *= Math.max(0.85, Math.min(hipRatio, 1.4));
-            }
-            if (wrist > 0) {
-                const wristExpected = gender === 'male' ? 17 : 15;
-                const wristRatio = wrist / wristExpected;
-                armWidth *= Math.max(0.8, Math.min(wristRatio, 1.3));
-            }
-            if (bodyFatPercent > 0) {
-                if (gender === 'male') {
-                    if (bodyFatPercent < 12) { muscleDefinition = 0.8; bellyScale = Math.max(0, bellyScale - 5); }
-                    else if (bodyFatPercent < 18) { muscleDefinition = 0.5; bellyScale = Math.max(0, bellyScale - 2); }
-                    else if (bodyFatPercent > 28) { bellyScale += 5; muscleDefinition = 0; }
-                } else {
-                    if (bodyFatPercent < 20) { muscleDefinition = 0.5; bellyScale = Math.max(0, bellyScale - 4); }
-                    else if (bodyFatPercent < 26) { muscleDefinition = 0.2; bellyScale = Math.max(0, bellyScale - 2); }
-                    else if (bodyFatPercent > 35) { bellyScale += 5; muscleDefinition = 0; }
-                }
-            }
-        }
-
-        const cx = 120, headY = 45, headR = 22;
-        const neckY = 70, shoulderY = 85, chestY = 110, waistY = 150, hipY = 175, legTopY = 190, legBottomY = 270;
-        const sw = shoulderWidth * bodyScale / 2;
-        const cw = chestWidth * bodyScale / 2;
-        const ww = waistWidth * bodyScale / 2;
-        const hw = hipWidth * bodyScale / 2;
-        const nw = neckWidth * bodyScale;
-        const aw = armWidth * bodyScale;
-        const bellyExtra = bellyScale * bodyScale;
-
-        const hijabSvg = gender === 'female' ? `
-            <path d="M ${cx - headR - 6} ${headY + 12}
-                     C ${cx - headR - 10} ${headY - headR - 6}, ${cx + headR + 10} ${headY - headR - 6}, ${cx + headR + 6} ${headY + 12}
-                     L ${cx + headR + 8} ${headY + 40}
-                     Q ${cx + sw + 6} ${shoulderY + 12}, ${cx + sw + 8} ${shoulderY + 18}
-                     L ${cx - sw - 8} ${shoulderY + 18}
-                     Q ${cx - sw - 6} ${shoulderY + 12}, ${cx - headR - 8} ${headY + 40}
-                     Z"
-                  fill="url(#hijabGrad)" opacity="0.97"/>
-            <circle cx="${cx + headR + 6}" cy="${headY + 8}" r="2.5" fill="#fbbf24" opacity="0.95"/>
-            <circle cx="${cx + headR + 6}" cy="${headY + 8}" r="1" fill="#fef9c3" opacity="0.7"/>
-        ` : `
-            <path d="M ${cx - headR + 2} ${headY - 5} 
-                     Q ${cx - headR} ${headY - headR - 3} ${cx} ${headY - headR - 5}
-                     Q ${cx + headR} ${headY - headR - 3} ${cx + headR - 2} ${headY - 5}
-                     Q ${cx + headR - 5} ${headY - headR + 5} ${cx} ${headY - headR + 3}
-                     Q ${cx - headR + 5} ${headY - headR + 5} ${cx - headR + 2} ${headY - 5} Z" 
-                  fill="#78350f"/>
-        `;
-
-        const muscleLines = (muscleDefinition > 0.3 && gender === 'male') ? `
-            <path d="M ${cx - cw*0.3} ${chestY - 10} Q ${cx} ${chestY - 5} ${cx + cw*0.3} ${chestY - 10}" 
-                  stroke="${bodyColorDark}" stroke-width="1.5" fill="none" opacity="${muscleDefinition * 0.6}"/>
-            <line x1="${cx}" y1="${chestY + 5}" x2="${cx}" y2="${waistY - 5}" 
-                  stroke="${bodyColorDark}" stroke-width="1.5" opacity="${muscleDefinition * 0.5}"/>
-            <line x1="${cx - ww*0.3}" y1="${waistY - 20}" x2="${cx + ww*0.3}" y2="${waistY - 20}" 
-                  stroke="${bodyColorDark}" stroke-width="1" opacity="${muscleDefinition * 0.4}"/>
-            <line x1="${cx - ww*0.25}" y1="${waistY - 10}" x2="${cx + ww*0.25}" y2="${waistY - 10}" 
-                  stroke="${bodyColorDark}" stroke-width="1" opacity="${muscleDefinition * 0.4}"/>
-        ` : '';
-
-        const bellySvg = bellyExtra > 0 ? `<ellipse cx="${cx}" cy="${waistY + 5}" rx="${ww + bellyExtra * 0.8}" ry="${bellyExtra * 1.2 + 15}" fill="url(#bodyGrad)" opacity="0.85"/>` : '';
-
-        const goalIcon = goal === 'gain' ? '💪' : goal === 'lose' ? '🔥' : '⚖️';
-        const goalColor = goal === 'gain' ? '#3b82f6' : goal === 'lose' ? '#f59e0b' : '#10b981';
-
-        const foreheadBand = gender === 'female' ? `
-            <path d="M ${cx - headR * 0.72} ${headY - headR * 0.45}
-                     Q ${cx} ${headY - headR * 1.05} ${cx + headR * 0.72} ${headY - headR * 0.45}
-                     Q ${cx} ${headY - headR * 0.78} ${cx - headR * 0.72} ${headY - headR * 0.45} Z"
-                  fill="url(#hijabGrad)" opacity="0.97"/>
-            <path d="M ${cx - headR * 0.68} ${headY - headR * 0.52}
-                     Q ${cx} ${headY - headR * 1.0} ${cx + headR * 0.68} ${headY - headR * 0.52}"
-                  stroke="#e9d5ff" stroke-width="1" fill="none" opacity="0.7"/>
-        ` : '';
-
-        const svg = `
-            <svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:${bodyColorLight};stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:${bodyColor};stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:${bodyColorDark};stop-opacity:1" />
-                    </linearGradient>
-                    <radialGradient id="skinGrad" cx="50%" cy="40%" r="60%">
-                        <stop offset="0%" style="stop-color:#FDBCB4;stop-opacity:1" />
-                        <stop offset="70%" style="stop-color:#F5D0A9;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#E8B4A0;stop-opacity:1" />
-                    </radialGradient>
-                    <linearGradient id="hijabGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1" />
-                    </linearGradient>
-                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.2"/>
-                    </filter>
-                    <clipPath id="faceClip">
-                        <ellipse cx="${cx}" cy="${headY + 3}" rx="${headR * 0.82}" ry="${headR * 0.92}"/>
-                    </clipPath>
-                </defs>
-                
-                <ellipse cx="${cx}" cy="285" rx="${30 * bodyScale}" ry="6" fill="rgba(0,0,0,0.1)"/>
-                
-                <g filter="url(#shadow)">
-                    <path d="M ${cx - ww*0.4} ${legTopY} Q ${cx - hw*0.5} ${legTopY + 20} ${cx - hw*0.45} ${legBottomY - 10} L ${cx - hw*0.35} ${legBottomY} L ${cx - hw*0.55} ${legBottomY + 5} L ${cx - hw*0.25} ${legBottomY + 5} L ${cx - hw*0.2} ${legBottomY - 10} Q ${cx - ww*0.2} ${legTopY + 20} ${cx - ww*0.2} ${legTopY} Z" fill="url(#bodyGrad)" opacity="0.95"/>
-                    <path d="M ${cx + ww*0.4} ${legTopY} Q ${cx + hw*0.5} ${legTopY + 20} ${cx + hw*0.45} ${legBottomY - 10} L ${cx + hw*0.35} ${legBottomY} L ${cx + hw*0.55} ${legBottomY + 5} L ${cx + hw*0.25} ${legBottomY + 5} L ${cx + hw*0.2} ${legBottomY - 10} Q ${cx + ww*0.2} ${legTopY + 20} ${cx + ww*0.2} ${legTopY} Z" fill="url(#bodyGrad)" opacity="0.95"/>
-                </g>
-                
-                <g filter="url(#shadow)">
-                    <path d="M ${cx - sw} ${shoulderY} Q ${cx - sw - 5} ${shoulderY + 15} ${cx - cw} ${chestY} Q ${cx - ww - bellyExtra} ${waistY} ${cx - hw} ${hipY} L ${cx - ww*0.5} ${legTopY} L ${cx + ww*0.5} ${legTopY} L ${cx + hw} ${hipY} Q ${cx + ww + bellyExtra} ${waistY} ${cx + cw} ${chestY} Q ${cx + sw + 5} ${shoulderY + 15} ${cx + sw} ${shoulderY} Z" fill="url(#bodyGrad)"/>
-                    ${muscleLines}
-                    ${bellySvg}
-                </g>
-                
-                <g filter="url(#shadow)">
-                    <path d="M ${cx - sw} ${shoulderY} Q ${cx - sw - aw*0.8} ${shoulderY + 10} ${cx - sw - aw} ${shoulderY + 35} Q ${cx - sw - aw*0.8} ${shoulderY + 55} ${cx - sw - aw*0.5} ${shoulderY + 70} L ${cx - sw - aw*0.2} ${shoulderY + 70} Q ${cx - sw - aw*0.4} ${shoulderY + 55} ${cx - sw - aw*0.5} ${shoulderY + 35} Q ${cx - sw - aw*0.3} ${shoulderY + 15} ${cx - sw + aw*0.3} ${shoulderY + 5} Z" fill="url(#bodyGrad)" opacity="0.9"/>
-                    <path d="M ${cx + sw} ${shoulderY} Q ${cx + sw + aw*0.8} ${shoulderY + 10} ${cx + sw + aw} ${shoulderY + 35} Q ${cx + sw + aw*0.8} ${shoulderY + 55} ${cx + sw + aw*0.5} ${shoulderY + 70} L ${cx + sw + aw*0.2} ${shoulderY + 70} Q ${cx + sw + aw*0.4} ${shoulderY + 55} ${cx + sw + aw*0.5} ${shoulderY + 35} Q ${cx + sw + aw*0.3} ${shoulderY + 15} ${cx + sw - aw*0.3} ${shoulderY + 5} Z" fill="url(#bodyGrad)" opacity="0.9"/>
-                </g>
-                
-                <rect x="${cx - nw/2}" y="${neckY}" width="${nw}" height="18" rx="5" fill="url(#skinGrad)"/>
-                
-                <g filter="url(#shadow)">
-                    ${hijabSvg}
-                    
-                    <g clip-path="url(#faceClip)">
-                        <ellipse cx="${cx}" cy="${headY + 2}" rx="${headR}" ry="${headR}" fill="url(#skinGrad)"/>
-                        <circle cx="${cx - 11}" cy="${headY + 9}" r="3.5" fill="#fca5a5" opacity="0.45"/>
-                        <circle cx="${cx + 11}" cy="${headY + 9}" r="3.5" fill="#fca5a5" opacity="0.45"/>
-                    </g>
-                    
-                    <ellipse cx="${cx - 7}" cy="${headY + 2}" rx="3.2" ry="3.6" fill="white"/>
-                    <ellipse cx="${cx + 7}" cy="${headY + 2}" rx="3.2" ry="3.6" fill="white"/>
-                    <circle cx="${cx - 7}" cy="${headY + 2.5}" r="1.9" fill="#1c1917"/>
-                    <circle cx="${cx + 7}" cy="${headY + 2.5}" r="1.9" fill="#1c1917"/>
-                    <circle cx="${cx - 6.3}" cy="${headY + 1.8}" r="0.7" fill="white"/>
-                    <circle cx="${cx + 7.7}" cy="${headY + 1.8}" r="0.7" fill="white"/>
-                    
-                    <path d="M ${cx - 10.5} ${headY - 3.5} Q ${cx - 7} ${headY - 6} ${cx - 3.5} ${headY - 3.5}" stroke="#57534e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    <path d="M ${cx + 3.5} ${headY - 3.5} Q ${cx + 7} ${headY - 6} ${cx + 10.5} ${headY - 3.5}" stroke="#57534e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    
-                    <path d="M ${cx} ${headY + 3.5} L ${cx - 2.2} ${headY + 9} L ${cx + 2.2} ${headY + 9}" stroke="#d4a373" stroke-width="1.1" fill="none" stroke-linecap="round"/>
-                    
-                    <path d="M ${cx - 5.5} ${headY + 13} Q ${cx - 2.5} ${headY + 15.5} ${cx} ${headY + 15} Q ${cx + 2.5} ${headY + 15.5} ${cx + 5.5} ${headY + 13}" stroke="#dc2626" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-                    
-                    ${foreheadBand}
-                </g>
-                
-                <text x="${cx + sw + 15}" y="${shoulderY + 20}" font-size="18" fill="${goalColor}" font-weight="bold">${goalIcon}</text>
-            </svg>
-        `;
-
-        let bodyType = '';
-        if (bmi < 18.5) bodyType = 'کمبود وزن';
-        else if (bmi < 25) bodyType = 'وزن نرمال';
-        else if (bmi < 30) bodyType = 'اضافه وزن';
-        else bodyType = 'چاقی';
-
-        return { svg, bodyType };
-    }
-
     let globalReportText = "";
     let isProMode = false;
     let activeTooltip = null;
@@ -1628,43 +1385,6 @@
             </div>
         `;
         goalCard.style.display = 'block';
-
-        const bodySchema = generateBodySchema(bmi, gender, goal, bodyFatPercent, isProMode, age, waist, neck, hip, wrist);
-        const bodySchemaCard = document.getElementById('bodySchemaCard');
-        bodySchemaCard.innerHTML = `
-            <div class="body-schema-title">👤 نمای شماتیک وضعیت بدنی شما</div>
-            <div class="body-schema-container">${bodySchema.svg}</div>
-            <div class="body-schema-stats">
-                <div class="body-stat">
-                    <div class="body-stat-value">${bodySchema.bodyType}</div>
-                    <div class="body-stat-label">نوع بدن</div>
-                </div>
-                <div class="body-stat">
-                    <div class="body-stat-value">${bmi}</div>
-                    <div class="body-stat-label">BMI</div>
-                </div>
-                ${isProMode && bodyFatPercent ? `
-                <div class="body-stat">
-                    <div class="body-stat-value">${bodyFatPercent}%</div>
-                    <div class="body-stat-label">درصد چربی</div>
-                </div>
-                <div class="body-stat">
-                    <div class="body-stat-value">${lbm}</div>
-                    <div class="body-stat-label">توده عضلانی</div>
-                </div>
-                ` : `
-                <div class="body-stat">
-                    <div class="body-stat-value">${weight} kg</div>
-                    <div class="body-stat-label">وزن فعلی</div>
-                </div>
-                <div class="body-stat">
-                    <div class="body-stat-value">${idealWeightMin}-${idealWeightMax}</div>
-                    <div class="body-stat-label">وزن ایده‌آل (kg)</div>
-                </div>
-                `}
-            </div>
-        `;
-        bodySchemaCard.style.display = 'block';
 
         if (isProMode) {
             document.getElementById('compGrid').innerHTML = `
