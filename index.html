@@ -355,6 +355,216 @@
         /* ==================================================== */
 
         @media (max-width: 380px) { .data-grid { grid-template-columns: 1fr; } .header h1 { font-size: 1.2rem; } .row { flex-direction: column; gap: 14px; } .container { padding: 18px; border-radius: 24px; } .goal-stats { grid-template-columns: 1fr; gap: 8px; } .goal-title { font-size: 1.15rem; } .onboarding-card { padding: 28px 18px; } .ob-title { font-size: 1.25rem; } .brand-name-fa { font-size: 1.95rem; } .brand-name-fa-sm { font-size: 1.3rem; } .brand-name-en { letter-spacing: 5px; } .top-action-btn { font-size: 0.78rem; padding: 9px 10px; gap: 4px; } .top-action-btn-icon { font-size: 1rem; } .top-action-bar { padding: 8px; gap: 6px; } }
+
+        /* ============ 🖥️ بهینه‌سازی نسخه دسکتاپ ============ */
+        @media (min-width: 768px) {
+            body { padding: 24px; }
+            body.has-top-bar { padding-top: 110px; }
+            
+            .onboarding-wrapper { max-width: 720px; min-height: calc(100vh - 48px); padding: 40px 0; }
+            .onboarding-card { max-width: 680px; padding: 48px 52px; border-radius: 40px; }
+            .container { max-width: 880px; padding: 40px; border-radius: 40px; }
+            
+            .brand-hero .brand-icon { width: 140px; }
+            .brand-name-fa { font-size: 3.2rem; }
+            .brand-name-en { font-size: 0.85rem; letter-spacing: 9px; }
+            .brand-tagline { font-size: 1rem; margin-top: 14px; }
+            
+            .brand-header .brand-icon { width: 72px; }
+            .brand-name-fa-sm { font-size: 2rem; }
+            .brand-name-en-sm { font-size: 0.75rem; letter-spacing: 6px; }
+            .brand-divider { width: 110px; height: 4px; margin: 6px auto 22px; }
+            
+            .ob-title { font-size: 2rem; margin-bottom: 18px; }
+            .ob-subtitle { font-size: 1.05rem; line-height: 2; margin-bottom: 26px; }
+            .ob-icon { font-size: 5rem; margin-bottom: 24px; }
+            .ob-badge { font-size: 0.85rem; padding: 9px 22px; }
+            
+            .ob-feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 640px; margin-left: auto; margin-right: auto; text-align: right; }
+            .ob-feature-item { padding: 18px 22px; margin-bottom: 0; border-radius: 20px; transition: all 0.25s ease; }
+            .ob-feature-icon { width: 52px; height: 52px; font-size: 1.7rem; border-radius: 14px; }
+            .ob-feature-text { font-size: 0.95rem; line-height: 1.8; }
+            .ob-feature-text b { font-size: 1.02rem; margin-bottom: 3px; }
+            
+            .ob-warning-box { padding: 26px 22px; border-radius: 24px; margin-bottom: 20px; }
+            .ob-warning-title { font-size: 1.05rem; }
+            .ob-warning-text { font-size: 0.9rem; line-height: 2; }
+            
+            .ob-agreement { padding: 18px 20px; border-radius: 20px; transition: all 0.25s ease; }
+            .ob-agreement-text { font-size: 0.88rem; line-height: 1.9; }
+            .ob-agreement input { width: 26px; height: 26px; }
+            
+            .ob-nav { gap: 14px; margin-top: 32px; }
+            .ob-btn { padding: 18px; font-size: 1.05rem; border-radius: 18px; transition: all 0.25s ease; }
+            .ob-btn-skip { font-size: 0.88rem; padding: 18px 14px; }
+            .ob-dots { gap: 10px; margin-top: 28px; }
+            .ob-dot { width: 12px; height: 12px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+            .ob-dot:hover { background: var(--stone-300); }
+            .ob-dot.active { width: 34px; }
+            
+            .header { margin-bottom: 36px; padding-bottom: 28px; }
+            .header h1 { font-size: 1.8rem; line-height: 1.6; }
+            .header .badge { font-size: 0.85rem; padding: 8px 22px; margin-top: 16px; }
+            
+            .section-title { font-size: 1.15rem; margin: 32px 0 18px; }
+            .section-title::before { width: 5px; height: 30px; }
+            
+            label { font-size: 0.92rem; margin-bottom: 10px; }
+            .tooltip-icon { width: 20px; height: 20px; font-size: 0.78rem; transition: all 0.2s ease; }
+            .tooltip-popup { padding: 18px 24px; font-size: 0.92rem; max-width: 400px; }
+            
+            input[type="number"], select { padding: 16px 20px; font-size: 17px; border-radius: 18px; }
+            .row { gap: 20px; margin-bottom: 18px; }
+            
+            .toggle-container { padding: 24px 30px; border-radius: 24px; margin: 32px 0; }
+            .toggle-label { font-size: 1.05rem; }
+            .switch { width: 64px; height: 36px; }
+            .slider:before { height: 30px; width: 30px; }
+            input:checked + .slider:before { transform: translateX(-28px); }
+            
+            .pro-fields { padding: 28px; border-radius: 28px; margin-bottom: 28px; }
+            
+            .top-action-bar {
+                top: 20px; left: 24px; right: 24px;
+                padding: 14px; gap: 14px; border-radius: 28px;
+            }
+            .top-action-btn {
+                padding: 14px 26px; font-size: 0.98rem;
+                max-width: 240px; border-radius: 18px; gap: 9px;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .top-action-btn-icon { font-size: 1.35rem; }
+            
+            /* افکت‌های Hover برای دسکتاپ */
+            .top-action-btn:hover { transform: translateY(-2px); }
+            .top-action-btn.back:hover { box-shadow: 0 14px 30px -6px rgba(59, 130, 246, 0.55), inset 0 1px 0 rgba(255,255,255,0.2); }
+            .top-action-btn.clear:hover { box-shadow: 0 14px 30px -6px rgba(245, 158, 11, 0.55), inset 0 1px 0 rgba(255,255,255,0.2); }
+            .top-action-btn.exit:hover { box-shadow: 0 14px 30px -6px rgba(239, 68, 68, 0.55), inset 0 1px 0 rgba(255,255,255,0.2); }
+            .ob-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -5px rgba(249, 115, 22, 0.45); }
+            .ob-btn-prev:hover { background: var(--stone-200); box-shadow: 0 6px 14px rgba(0,0,0,0.08); }
+            .ob-feature-item:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(249, 115, 22, 0.15); border-color: var(--orange-200); }
+            .ob-agreement:hover { background: rgba(255,255,255,0.9); border-color: var(--orange-300); box-shadow: 0 6px 18px rgba(249, 115, 22, 0.12); }
+            .tooltip-icon:hover { background: var(--orange-200); transform: scale(1.15); }
+            .data-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); border-color: var(--orange-200); }
+            .tab-btn:not(.active):hover { background: var(--stone-200); color: var(--stone-700); transform: translateY(-1px); }
+            .tab-btn.active:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.6); }
+            .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -6px rgba(249, 115, 22, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2) inset; }
+            .btn-share:hover { transform: translateY(-2px); box-shadow: 0 16px 35px -6px rgba(28, 25, 23, 0.5); }
+            .custom-alert-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -5px rgba(249, 115, 22, 0.5); }
+            
+            .score-card { padding: 48px 36px; border-radius: 36px; margin-bottom: 32px; }
+            .score-value { font-size: 5.5rem; margin: 16px 0; }
+            .score-label { font-size: 1.45rem; }
+            
+            .goal-card { padding: 34px 32px; border-radius: 32px; margin-bottom: 32px; }
+            .goal-header { gap: 18px; margin-bottom: 18px; }
+            .goal-icon { font-size: 3.4rem; }
+            .goal-title { font-size: 1.55rem; }
+            .goal-subtitle { font-size: 0.95rem; }
+            .goal-stats { margin-top: 20px; padding-top: 20px; gap: 14px; }
+            .goal-stat-value { font-size: 1.75rem; }
+            .goal-stat-label { font-size: 0.85rem; margin-top: 4px; }
+            .goal-reason { margin-top: 18px; padding: 14px 18px; font-size: 0.92rem; border-radius: 14px; }
+            
+            .age-warning { padding: 20px; border-radius: 22px; font-size: 0.95rem; margin-bottom: 28px; }
+            .age-warning-icon { font-size: 1.7rem; }
+            
+            .data-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+            .data-card { padding: 22px; border-radius: 22px; }
+            .data-card-title { font-size: 0.9rem; margin-bottom: 10px; }
+            .data-card-val { font-size: 1.4rem; }
+            .data-card-sub { font-size: 0.82rem; padding: 4px 12px; margin-top: 8px; }
+            
+            .chart-container { margin: 32px 0; padding: 28px; border-radius: 28px; }
+            .chart-title { font-size: 1.08rem; margin-bottom: 20px; }
+            .percentile-chart { height: 420px; }
+            .percentile-legend { gap: 16px; margin-top: 18px; }
+            .legend-item { font-size: 0.82rem; gap: 7px; }
+            .legend-color { width: 16px; height: 16px; }
+            
+            .progress-bar { height: 24px; border-radius: 14px; margin-bottom: 14px; }
+            .marker { top: -7px; width: 7px; height: 38px; }
+            .marker::after { font-size: 0.78rem; padding: 4px 12px; top: -30px; }
+            
+            .analysis-text { padding: 28px 32px; border-radius: 24px; font-size: 1rem; line-height: 2; margin-bottom: 28px; border-right-width: 6px; }
+            .analysis-text h4 { margin-bottom: 14px; font-size: 1.15rem; }
+            .analysis-text ul { padding-right: 28px; margin-top: 14px; }
+            .analysis-text li { margin-bottom: 12px; }
+            
+            .macro-bar { height: 30px; border-radius: 16px; margin: 18px 0; }
+            
+            .tab-nav { gap: 10px; padding-bottom: 16px; margin-bottom: 28px; overflow-x: visible; }
+            .tab-btn { padding: 12px 22px; font-size: 0.95rem; border-radius: 16px; }
+            
+            .btn-submit, .btn-share { padding: 20px; font-size: 1.1rem; border-radius: 22px; margin-top: 20px; }
+            
+            .source-box { padding: 26px; font-size: 0.88rem; line-height: 2; border-radius: 24px; margin-top: 28px; }
+            
+            .custom-alert-box { max-width: 480px; padding: 40px 36px; border-radius: 32px; }
+            .custom-alert-title { font-size: 1.45rem; margin-bottom: 20px; gap: 10px; }
+            .custom-alert-msg { font-size: 1.05rem; line-height: 1.9; margin-bottom: 28px; }
+            .custom-alert-btn { padding: 17px 40px; font-size: 1.08rem; border-radius: 18px; }
+        }
+
+        @media (min-width: 1200px) {
+            body { padding: 32px; }
+            body.has-top-bar { padding-top: 128px; }
+            
+            .onboarding-wrapper { max-width: 900px; }
+            .onboarding-card { max-width: 840px; padding: 60px 72px; }
+            .container { max-width: 1080px; padding: 48px 56px; }
+            
+            .brand-hero .brand-icon { width: 160px; }
+            .brand-name-fa { font-size: 3.8rem; }
+            .brand-name-en { font-size: 0.9rem; letter-spacing: 11px; }
+            .brand-tagline { font-size: 1.1rem; }
+            
+            .brand-header .brand-icon { width: 84px; }
+            .brand-name-fa-sm { font-size: 2.4rem; }
+            .brand-name-en-sm { font-size: 0.82rem; letter-spacing: 7px; }
+            .brand-divider { width: 130px; height: 4px; }
+            
+            .ob-title { font-size: 2.4rem; }
+            .ob-subtitle { font-size: 1.15rem; }
+            .ob-icon { font-size: 5.8rem; }
+            .ob-feature-list { max-width: 780px; gap: 16px; }
+            .ob-feature-item { padding: 20px 26px; }
+            .ob-feature-icon { width: 58px; height: 58px; font-size: 1.9rem; }
+            .ob-feature-text { font-size: 1.02rem; }
+            
+            .header h1 { font-size: 2.1rem; }
+            .header .badge { font-size: 0.9rem; padding: 9px 26px; }
+            
+            .section-title { font-size: 1.25rem; margin: 36px 0 20px; }
+            .section-title::before { width: 6px; height: 34px; }
+            
+            input[type="number"], select { padding: 18px 22px; font-size: 18px; }
+            
+            .top-action-bar {
+                top: 28px; left: 32px; right: 32px;
+                padding: 16px; gap: 16px; border-radius: 32px;
+            }
+            .top-action-btn { padding: 16px 30px; font-size: 1.05rem; max-width: 260px; border-radius: 20px; }
+            .top-action-btn-icon { font-size: 1.45rem; }
+            
+            .data-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+            .data-card { padding: 24px; }
+            .data-card-val { font-size: 1.5rem; }
+            
+            .score-card { padding: 56px 40px; }
+            .score-value { font-size: 6.2rem; }
+            .score-label { font-size: 1.55rem; }
+            
+            .goal-card { padding: 38px 36px; }
+            .goal-title { font-size: 1.7rem; }
+            .goal-icon { font-size: 3.8rem; }
+            
+            .percentile-chart { height: 480px; }
+            .chart-container { padding: 32px; }
+            .chart-title { font-size: 1.18rem; }
+            
+            .analysis-text { font-size: 1.05rem; padding: 32px 36px; }
+        }
     </style>
 </head>
 <body>
@@ -1229,7 +1439,7 @@
         const isTeen = age < 20;
         
         document.getElementById('resultBox').style.display = 'block';
-        updateTopActionBar(); // 🆕 مخفی کردن دکمه پاک کردن بعد از نمایش نتایج
+        updateTopActionBar();
         
         let status = "", cardBg = "", percentile = 0, category = "";
         let idealWeightMin, idealWeightMax;
